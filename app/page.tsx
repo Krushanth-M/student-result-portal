@@ -7,7 +7,13 @@ import { GraduationCap, Shield } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-[#f8fafc] px-4">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-[#f8fafc] px-4 gap-8">
+      
+      {/* Centered System Header */}
+      <h1 className="text-sm font-black uppercase tracking-widest text-slate-900 border-b-2 border-slate-900 pb-2">
+        APEX RESULT
+      </h1>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl">
         
         {/* Student Portal Card */}
@@ -20,7 +26,7 @@ export default function Home() {
             <div className="h-16 w-16 bg-slate-50 text-slate-800 flex items-center justify-center border border-slate-200">
               <GraduationCap className="h-8 w-8" />
             </div>
-            <span className="text-sm font-black uppercase tracking-widest text-slate-900">
+            <span className="text-xs font-black uppercase tracking-widest text-slate-900">
               Student Portal
             </span>
           </motion.div>
@@ -36,7 +42,7 @@ export default function Home() {
             <div className="h-16 w-16 bg-slate-50 text-slate-800 flex items-center justify-center border border-slate-200">
               <Shield className="h-8 w-8" />
             </div>
-            <span className="text-sm font-black uppercase tracking-widest text-slate-900">
+            <span className="text-xs font-black uppercase tracking-widest text-slate-900">
               Faculty Console
             </span>
           </motion.div>
