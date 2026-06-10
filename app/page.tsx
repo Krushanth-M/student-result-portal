@@ -7,14 +7,34 @@ import { GraduationCap, Shield } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-[#f8fafc] px-4 gap-8">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-[#f8fafc] px-4 gap-12">
       
-      {/* Centered System Header */}
-      <h1 className="text-sm font-black uppercase tracking-widest text-slate-900 border-b-2 border-slate-900 pb-2">
-        APEX RESULT
-      </h1>
+      {/* Centered System Header / Logo */}
+      <div className="text-center flex flex-col items-center gap-4 mb-4 select-none">
+        {/* Abstract geometric academic emblem */}
+        <div className="h-16 w-16 border-2 border-slate-900 flex items-center justify-center bg-white relative shadow-[4px_4px_0px_0px_rgba(15,23,42,1)]">
+          <div className="absolute inset-1 border border-slate-200 flex items-center justify-center">
+            <span className="font-mono text-xl font-black tracking-tighter text-slate-900">
+              AX
+            </span>
+          </div>
+        </div>
+        
+        <div className="space-y-2">
+          <h1 className="text-3xl font-black uppercase tracking-[0.25em] text-slate-900 leading-none">
+            APEX RESULT
+          </h1>
+          <div className="flex items-center justify-center gap-2">
+            <span className="h-[1px] w-6 bg-slate-350" />
+            <p className="text-[9px] font-black text-slate-400 tracking-[0.25em] uppercase">
+              Official Academic Registry
+            </p>
+            <span className="h-[1px] w-6 bg-slate-350" />
+          </div>
+        </div>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl relative z-10">
         
         {/* Student Portal Card */}
         <Link href="/student-view" className="group block">
