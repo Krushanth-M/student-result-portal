@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Intel - Predictive Intelligence Workspace</title>
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'cyber-amber': '#ff9e00',
+            'cyber-rust': '#c2410c',
+            'cyber-gold': '#84cc16',
+            'oled-black': '#040507'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Custom Monochromatic CSS Styles -->
+  <link rel="stylesheet" href="/static/style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-oled-black text-zinc-100 overflow-hidden w-screen h-screen select-none">
+
+  <!-- Cinematic SVG Static Grain Overlays -->
+  <div class="noise-overlay"></div>
+
+  <!-- Ambient Blurred Glow Elements -->
+  <div class="ambient-orb orb-amber-1"></div>
+  <div class="ambient-orb orb-amber-2"></div>
+
+  <!-- React Mount Point -->
+  <div id="root" class="relative w-full h-full z-10"></div>
+
+  <!-- React & ReactDOM CDN Scripts -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <!-- Babel Standalone compiler to support JSX in the browser -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Main React Client Logic -->
+  <script type="text/babel" src="/static/app.js"></script>
+</body>
+</html>

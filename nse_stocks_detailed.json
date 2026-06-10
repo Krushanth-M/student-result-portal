@@ -1,0 +1,3002 @@
+{
+  "RELIANCE": {
+    "name": "Reliance Industries Limited",
+    "price": 1263.3,
+    "market_cap": 17100000000000,
+    "change_pct": -2.15
+  },
+  "HDFCBANK": {
+    "name": "HDFC Bank Limited",
+    "price": 738.35,
+    "market_cap": 11370000000000,
+    "change_pct": -1.16
+  },
+  "BHARTIARTL": {
+    "name": "Bharti Airtel Limited",
+    "price": 1820.1,
+    "market_cap": 11060000000000,
+    "change_pct": 1.22
+  },
+  "SBIN": {
+    "name": "State Bank of India",
+    "price": 980.0,
+    "market_cap": 9060000000000,
+    "change_pct": 0.24
+  },
+  "ICICIBANK": {
+    "name": "ICICI Bank Limited",
+    "price": 1250.0,
+    "market_cap": 8960000000000,
+    "change_pct": -0.96
+  },
+  "TCS": {
+    "name": "Tata Consultancy Services Limited",
+    "price": 2149.4,
+    "market_cap": 7780000000000,
+    "change_pct": -2.25
+  },
+  "BAJFINANCE": {
+    "name": "Bajaj Finance Limited",
+    "price": 869.25,
+    "market_cap": 5400000000000,
+    "change_pct": -2.27
+  },
+  "LT": {
+    "name": "Larsen & Toubro Limited",
+    "price": 3870.5,
+    "market_cap": 5330000000000,
+    "change_pct": -2.09
+  },
+  "LICI": {
+    "name": "Life Insurance Corporation of India",
+    "price": 396.0,
+    "market_cap": 5000000000000,
+    "change_pct": -0.98
+  },
+  "HINDUNILVR": {
+    "name": "Hindustan Unilever Limited",
+    "price": 2109.0,
+    "market_cap": 4960000000000,
+    "change_pct": -0.59
+  },
+  "INFY": {
+    "name": "Infosys Limited",
+    "price": 1187.0,
+    "market_cap": 4810000000000,
+    "change_pct": -0.88
+  },
+  "ADANIPOWER": {
+    "name": "Adani Power Limited",
+    "price": 225.0,
+    "market_cap": 4360000000000,
+    "change_pct": -3.27
+  },
+  "SUNPHARMA": {
+    "name": "Sun Pharmaceutical Industries Limited",
+    "price": 1791.7,
+    "market_cap": 4290000000000,
+    "change_pct": 0.53
+  },
+  "ADANIPORTS": {
+    "name": "Adani Ports and Special Economic Zone Limited",
+    "price": 1794.6,
+    "market_cap": 4160000000000,
+    "change_pct": -1.62
+  },
+  "MARUTI": {
+    "name": "Maruti Suzuki India Limited",
+    "price": 12875.0,
+    "market_cap": 4059999999999,
+    "change_pct": -1.34
+  },
+  "AXISBANK": {
+    "name": "Axis Bank Limited",
+    "price": 1267.3,
+    "market_cap": 3940000000000,
+    "change_pct": -0.39
+  },
+  "ADANIENT": {
+    "name": "Adani Enterprises Limited",
+    "price": 2965.0,
+    "market_cap": 3870000000000,
+    "change_pct": -2.73
+  },
+  "KOTAKBANK": {
+    "name": "Kotak Mahindra Bank Limited",
+    "price": 376.85,
+    "market_cap": 3750000000000,
+    "change_pct": -0.16
+  },
+  "TITAN": {
+    "name": "Titan Company Limited",
+    "price": 4187.0,
+    "market_cap": 3720000000000,
+    "change_pct": -1.72
+  },
+  "NTPC": {
+    "name": "NTPC Limited",
+    "price": 361.5,
+    "market_cap": 3510000000000,
+    "change_pct": -0.04
+  },
+  "ITC": {
+    "name": "ITC Limited",
+    "price": 280.0,
+    "market_cap": 3500000000000,
+    "change_pct": -0.25
+  },
+  "ONGC": {
+    "name": "Oil and Natural Gas Corporation Limited",
+    "price": 264.7,
+    "market_cap": 3330000000000,
+    "change_pct": -0.02
+  },
+  "M_M": {
+    "name": "Mahindra & Mahindra Limited",
+    "price": 2970.0,
+    "market_cap": 3310000000000,
+    "change_pct": -2.32
+  },
+  "ULTRACEMCO": {
+    "name": "UltraTech Cement Limited",
+    "price": 10760.0,
+    "market_cap": 3180000000000,
+    "change_pct": -1.39
+  },
+  "HCLTECH": {
+    "name": "HCL Technologies Limited",
+    "price": 1151.8,
+    "market_cap": 3120000000000,
+    "change_pct": -0.25
+  },
+  "JSWSTEEL": {
+    "name": "JSW Steel Limited",
+    "price": 1258.0,
+    "market_cap": 3080000000000,
+    "change_pct": -2.02
+  },
+  "COALINDIA": {
+    "name": "Coal India Limited",
+    "price": 464.55,
+    "market_cap": 3070000000000,
+    "change_pct": -1.64
+  },
+  "BEL": {
+    "name": "Bharat Electronics Limited",
+    "price": 412.3,
+    "market_cap": 3020000000000,
+    "change_pct": 1.0
+  },
+  "BAJAJ_AUTO": {
+    "name": "Bajaj Auto Limited",
+    "price": 10231.0,
+    "market_cap": 2860000000000,
+    "change_pct": -1.07
+  },
+  "HAL": {
+    "name": "Hindustan Aeronautics Limited",
+    "price": 4230.0,
+    "market_cap": 2830000000000,
+    "change_pct": 0.31
+  },
+  "POWERGRID": {
+    "name": "Power Grid Corporation of India Limited",
+    "price": 290.0,
+    "market_cap": 2700000000000,
+    "change_pct": 1.52
+  },
+  "NESTLEIND": {
+    "name": "Nestl\u00e9 India Limited",
+    "price": 1399.9,
+    "market_cap": 2700000000000,
+    "change_pct": 0.99
+  },
+  "BAJAJFINSV": {
+    "name": "Bajaj Finserv Ltd.",
+    "price": 1665.7,
+    "market_cap": 2670000000000,
+    "change_pct": -2.2
+  },
+  "DMART": {
+    "name": "Avenue Supermarts Limited",
+    "price": 4041.0,
+    "market_cap": 2650000000000,
+    "change_pct": -2.49
+  },
+  "ASIANPAINT": {
+    "name": "Asian Paints Limited",
+    "price": 2655.1,
+    "market_cap": 2550000000000,
+    "change_pct": -1.18
+  },
+  "TATASTEEL": {
+    "name": "Tata Steel Limited",
+    "price": 201.6,
+    "market_cap": 2530000000000,
+    "change_pct": -2.5
+  },
+  "ADANIGREEN": {
+    "name": "Adani Green Energy Limited",
+    "price": 1488.9,
+    "market_cap": 2460000000000,
+    "change_pct": -2.41
+  },
+  "HINDALCO": {
+    "name": "Hindalco Industries Limited",
+    "price": 1053.0,
+    "market_cap": 2360000000000,
+    "change_pct": -3.62
+  },
+  "HINDZINC": {
+    "name": "Hindustan Zinc Limited",
+    "price": 556.0,
+    "market_cap": 2350000000000,
+    "change_pct": -1.91
+  },
+  "ETERNAL": {
+    "name": "Eternal Limited",
+    "price": 247.15,
+    "market_cap": 2280000000000,
+    "change_pct": -3.65
+  },
+  "SHRIRAMFIN": {
+    "name": "Shriram Finance Limited",
+    "price": 894.3,
+    "market_cap": 2109999999999,
+    "change_pct": -3.14
+  },
+  "GRASIM": {
+    "name": "Grasim Industries Limited",
+    "price": 3060.3,
+    "market_cap": 2069999999999,
+    "change_pct": -0.89
+  },
+  "EICHERMOT": {
+    "name": "Eicher Motors Limited",
+    "price": 7031.0,
+    "market_cap": 1930000000000,
+    "change_pct": -0.55
+  },
+  "WIPRO": {
+    "name": "Wipro Limited",
+    "price": 181.6,
+    "market_cap": 1910000000000,
+    "change_pct": -8.45
+  },
+  "ADANIENSOL": {
+    "name": "Adani Energy Solutions Limited",
+    "price": 1564.4,
+    "market_cap": 1890000000000,
+    "change_pct": -0.92
+  },
+  "IOC": {
+    "name": "Indian Oil Corporation Limited",
+    "price": 135.41,
+    "market_cap": 1870000000000,
+    "change_pct": -2.06
+  },
+  "SBILIFE": {
+    "name": "SBI Life Insurance Company Limited",
+    "price": 1768.0,
+    "market_cap": 1770000000000,
+    "change_pct": -0.83
+  },
+  "VBL": {
+    "name": "Varun Beverages Limited",
+    "price": 519.05,
+    "market_cap": 1770000000000,
+    "change_pct": -0.81
+  },
+  "DIVISLAB": {
+    "name": "Divi's Laboratories Limited",
+    "price": 6506.5,
+    "market_cap": 1730000000000,
+    "change_pct": -1.76
+  },
+  "INDIGO": {
+    "name": "InterGlobe Aviation Limited",
+    "price": 4375.0,
+    "market_cap": 1690000000000,
+    "change_pct": -2.37
+  },
+  "SOLARINDS": {
+    "name": "Solar Industries India Limited",
+    "price": 18047.0,
+    "market_cap": 1640000000000,
+    "change_pct": -2.14
+  },
+  "ICICIAMC": {
+    "name": "ICICI Prudential Asset Management Company Limited",
+    "price": 3233.5,
+    "market_cap": 1600000000000,
+    "change_pct": -0.48
+  },
+  "BSE": {
+    "name": "BSE Limited",
+    "price": 3906.3,
+    "market_cap": 1600000000000,
+    "change_pct": 0.68
+  },
+  "TVSMOTOR": {
+    "name": "TVS Motor Company Limited",
+    "price": 3315.0,
+    "market_cap": 1580000000000,
+    "change_pct": -2.04
+  },
+  "POWERINDIA": {
+    "name": "Hitachi Energy India Limited",
+    "price": 34705.0,
+    "market_cap": 1560000000000,
+    "change_pct": -5.87
+  },
+  "IDEA": {
+    "name": "Vodafone Idea Limited",
+    "price": 14.35,
+    "market_cap": 1560000000000,
+    "change_pct": -4.01
+  },
+  "CUMMINSIND": {
+    "name": "Cummins India Limited",
+    "price": 5564.0,
+    "market_cap": 1550000000000,
+    "change_pct": -3.8
+  },
+  "HYUNDAI": {
+    "name": "Hyundai Motor India Limited",
+    "price": 1897.3,
+    "market_cap": 1540000000000,
+    "change_pct": -0.85
+  },
+  "JIOFIN": {
+    "name": "Jio Financial Services Limited",
+    "price": 228.19,
+    "market_cap": 1510000000000,
+    "change_pct": -3.67
+  },
+  "TORNTPHARM": {
+    "name": "Torrent Pharmaceuticals Limited",
+    "price": 4410.0,
+    "market_cap": 1490000000000,
+    "change_pct": -0.25
+  },
+  "PIDILITIND": {
+    "name": "Pidilite Industries Limited",
+    "price": 1454.1,
+    "market_cap": 1490000000000,
+    "change_pct": -1.52
+  },
+  "ABB": {
+    "name": "ABB India Limited",
+    "price": 6920.0,
+    "market_cap": 1470000000000,
+    "change_pct": -3.45
+  },
+  "MOTHERSON": {
+    "name": "Samvardhana Motherson International Limited",
+    "price": 138.2,
+    "market_cap": 1470000000000,
+    "change_pct": -3.73
+  },
+  "TRENT": {
+    "name": "Trent Limited",
+    "price": 2715.0,
+    "market_cap": 1450000000000,
+    "change_pct": -2.13
+  },
+  "TMPV": {
+    "name": "Tata Motors Passenger Vehicles Limited",
+    "price": 389.0,
+    "market_cap": 1430000000000,
+    "change_pct": -2.21
+  },
+  "POLYCAB": {
+    "name": "Polycab India Limited",
+    "price": 9450.0,
+    "market_cap": 1430000000000,
+    "change_pct": -2.57
+  },
+  "CGPOWER": {
+    "name": "CG Power and Industrial Solutions Limited",
+    "price": 897.95,
+    "market_cap": 1420000000000,
+    "change_pct": -4.25
+  },
+  "PFC": {
+    "name": "Power Finance Corporation Limited",
+    "price": 428.0,
+    "market_cap": 1410000000000,
+    "change_pct": -0.87
+  },
+  "DLF": {
+    "name": "DLF Limited",
+    "price": 559.0,
+    "market_cap": 1390000000000,
+    "change_pct": -3.24
+  },
+  "BHEL": {
+    "name": "Bharat Heavy Electricals Limited",
+    "price": 385.0,
+    "market_cap": 1340000000000,
+    "change_pct": -0.5
+  },
+  "BANKBARODA": {
+    "name": "Bank of Baroda Limited",
+    "price": 259.55,
+    "market_cap": 1340000000000,
+    "change_pct": -1.57
+  },
+  "TMCV": {
+    "name": "Tata Motors Limited",
+    "price": 363.0,
+    "market_cap": 1340000000000,
+    "change_pct": -1.67
+  },
+  "TECHM": {
+    "name": "Tech Mahindra Limited",
+    "price": 1498.0,
+    "market_cap": 1330000000000,
+    "change_pct": 0.98
+  },
+  "TATACAP": {
+    "name": "Tata Capital Limited",
+    "price": 312.55,
+    "market_cap": 1320000000000,
+    "change_pct": -0.72
+  },
+  "TATAPOWER": {
+    "name": "Tata Power Company Limited",
+    "price": 403.45,
+    "market_cap": 1290000000000,
+    "change_pct": -1.41
+  },
+  "SIEMENS": {
+    "name": "Siemens Limited",
+    "price": 3576.0,
+    "market_cap": 1290000000000,
+    "change_pct": -3.37
+  },
+  "UNIONBANK": {
+    "name": "Union Bank of India",
+    "price": 164.7,
+    "market_cap": 1260000000000,
+    "change_pct": -1.38
+  },
+  "ENRIN": {
+    "name": "Siemens Energy India Limited",
+    "price": 3493.1,
+    "market_cap": 1250000000000,
+    "change_pct": -4.24
+  },
+  "CHOLAFIN": {
+    "name": "Cholamandalam Investment and Finance Company Limited",
+    "price": 1451.0,
+    "market_cap": 1240000000000,
+    "change_pct": -3.47
+  },
+  "IRFC": {
+    "name": "Indian Railway Finance Corporation Limited",
+    "price": 94.85,
+    "market_cap": 1240000000000,
+    "change_pct": -1.68
+  },
+  "BPCL": {
+    "name": "Bharat Petroleum Corporation Limited",
+    "price": 284.75,
+    "market_cap": 1240000000000,
+    "change_pct": -3.47
+  },
+  "BRITANNIA": {
+    "name": "Britannia Industries Limited",
+    "price": 5059.0,
+    "market_cap": 1220000000000,
+    "change_pct": -1.2
+  },
+  "HDFCLIFE": {
+    "name": "HDFC Life Insurance Company Limited",
+    "price": 563.0,
+    "market_cap": 1220000000000,
+    "change_pct": -2.14
+  },
+  "PNB": {
+    "name": "Punjab National Bank",
+    "price": 105.4,
+    "market_cap": 1210000000000,
+    "change_pct": -1.36
+  },
+  "GVT_D": {
+    "name": "GE Vernova T&D India Limited",
+    "price": 4744.0,
+    "market_cap": 1210000000000,
+    "change_pct": -6.38
+  },
+  "APOLLOHOSP": {
+    "name": "Apollo Hospitals Enterprise Limited",
+    "price": 8345.0,
+    "market_cap": 1200000000000,
+    "change_pct": 0.49
+  },
+  "CANBK": {
+    "name": "Canara Bank",
+    "price": 131.6,
+    "market_cap": 1200000000000,
+    "change_pct": -3.1
+  },
+  "GROWW": {
+    "name": "Billionbrains Garage Ventures Limited",
+    "price": 189.86,
+    "market_cap": 1190000000000,
+    "change_pct": -3.18
+  },
+  "MUTHOOTFIN": {
+    "name": "Muthoot Finance Limited",
+    "price": 2953.0,
+    "market_cap": 1190000000000,
+    "change_pct": -6.35
+  },
+  "VEDL": {
+    "name": "Vedanta Limited",
+    "price": 303.0,
+    "market_cap": 1190000000000,
+    "change_pct": -3.99
+  },
+  "LTM": {
+    "name": "LTM Limited",
+    "price": 3976.1,
+    "market_cap": 1180000000000,
+    "change_pct": -1.27
+  },
+  "JINDALSTEL": {
+    "name": "Jindal Steel Limited",
+    "price": 1152.9,
+    "market_cap": 1180000000000,
+    "change_pct": -2.4
+  },
+  "INDIANB": {
+    "name": "Indian Bank",
+    "price": 840.0,
+    "market_cap": 1140000000000,
+    "change_pct": -0.24
+  },
+  "INDUSTOWER": {
+    "name": "Indus Towers Limited",
+    "price": 425.65,
+    "market_cap": 1120000000000,
+    "change_pct": -0.93
+  },
+  "CIPLA": {
+    "name": "Cipla Limited",
+    "price": 1386.3,
+    "market_cap": 1120000000000,
+    "change_pct": -1.07
+  },
+  "GAIL": {
+    "name": "GAIL (India) Limited",
+    "price": 168.0,
+    "market_cap": 1110000000000,
+    "change_pct": 0.36
+  },
+  "BAJAJHLDNG": {
+    "name": "Bajaj Holdings & Investment Limited",
+    "price": 9825.0,
+    "market_cap": 1100000000000,
+    "change_pct": -3.67
+  },
+  "TATACONSUM": {
+    "name": "Tata Consumer Products Limited",
+    "price": 1105.9,
+    "market_cap": 1100000000000,
+    "change_pct": -2.21
+  },
+  "ZYDUSLIFE": {
+    "name": "Zydus Lifesciences Limited",
+    "price": 1087.0,
+    "market_cap": 1090000000000,
+    "change_pct": -0.18
+  },
+  "BOSCHLTD": {
+    "name": "Bosch Limited",
+    "price": 36545.0,
+    "market_cap": 1080000000000,
+    "change_pct": -1.87
+  },
+  "DRREDDY": {
+    "name": "Dr. Reddy's Laboratories Limited",
+    "price": 1275.0,
+    "market_cap": 1060000000000,
+    "change_pct": -0.25
+  },
+  "GMRAIRPORT": {
+    "name": "GMR Airports Limited",
+    "price": 100.32,
+    "market_cap": 1060000000000,
+    "change_pct": -1.68
+  },
+  "HDFCAMC": {
+    "name": "HDFC Asset Management Company Limited",
+    "price": 2441.0,
+    "market_cap": 1050000000000,
+    "change_pct": -2.2
+  },
+  "MARICO": {
+    "name": "Marico Limited",
+    "price": 804.85,
+    "market_cap": 1050000000000,
+    "change_pct": -0.72
+  },
+  "JSWENERGY": {
+    "name": "JSW Energy Limited",
+    "price": 565.0,
+    "market_cap": 1050000000000,
+    "change_pct": -3.29
+  },
+  "LGEINDIA": {
+    "name": "LG Electronics India Limited",
+    "price": 1519.9,
+    "market_cap": 1030000000000,
+    "change_pct": 1.36
+  },
+  "LUPIN": {
+    "name": "Lupin Limited",
+    "price": 2248.0,
+    "market_cap": 1030000000000,
+    "change_pct": -0.87
+  },
+  "AMBUJACEM": {
+    "name": "Ambuja Cements Limited",
+    "price": 411.35,
+    "market_cap": 1030000000000,
+    "change_pct": -1.48
+  },
+  "GODREJCP": {
+    "name": "Godrej Consumer Products Limited",
+    "price": 994.5,
+    "market_cap": 1020000000000,
+    "change_pct": -0.35
+  },
+  "MAXHEALTH": {
+    "name": "Max Healthcare Institute Limited",
+    "price": 1006.05,
+    "market_cap": 979130000000,
+    "change_pct": 2.95
+  },
+  "MANKIND": {
+    "name": "Mankind Pharma Limited",
+    "price": 2355.0,
+    "market_cap": 973200000000,
+    "change_pct": 0.81
+  },
+  "LLOYDSME": {
+    "name": "Lloyds Metals and Energy Limited",
+    "price": 1705.8,
+    "market_cap": 963710000000,
+    "change_pct": -4.09
+  },
+  "MAZDOCK": {
+    "name": "Mazagon Dock Shipbuilders Limited",
+    "price": 2379.6,
+    "market_cap": 963670000000,
+    "change_pct": -1.8
+  },
+  "HEROMOTOCO": {
+    "name": "Hero MotoCorp Limited",
+    "price": 4769.2,
+    "market_cap": 955710000000,
+    "change_pct": -1.36
+  },
+  "INDHOTEL": {
+    "name": "The Indian Hotels Company Limited",
+    "price": 652.0,
+    "market_cap": 928720000000,
+    "change_pct": -0.85
+  },
+  "BHARATFORG": {
+    "name": "Bharat Forge Limited",
+    "price": 1895.0,
+    "market_cap": 905640000000,
+    "change_pct": -1.8
+  },
+  "RECLTD": {
+    "name": "REC Limited",
+    "price": 342.5,
+    "market_cap": 904250000000,
+    "change_pct": -0.41
+  },
+  "ABCAPITAL": {
+    "name": "Aditya Birla Capital Limited",
+    "price": 342.55,
+    "market_cap": 901560000000,
+    "change_pct": -4.18
+  },
+  "UNITDSPR": {
+    "name": "United Spirits Limited",
+    "price": 1235.0,
+    "market_cap": 879400000000,
+    "change_pct": -0.94
+  },
+  "LENSKART": {
+    "name": "Lenskart Solutions Limited",
+    "price": 504.65,
+    "market_cap": 876280000000,
+    "change_pct": -0.36
+  },
+  "LODHA": {
+    "name": "Lodha Developers Limited",
+    "price": 871.0,
+    "market_cap": 870020000000,
+    "change_pct": -2.62
+  },
+  "ICICIGI": {
+    "name": "ICICI Lombard General Insurance Company Limited",
+    "price": 1738.1,
+    "market_cap": 867360000000,
+    "change_pct": -1.13
+  },
+  "WAAREEENER": {
+    "name": "Waaree Energies Limited",
+    "price": 3001.8,
+    "market_cap": 864050000000,
+    "change_pct": -1.68
+  },
+  "SHREECEM": {
+    "name": "Shree Cement Limited",
+    "price": 23505.0,
+    "market_cap": 849160000000,
+    "change_pct": -2.41
+  },
+  "OFSS": {
+    "name": "Oracle Financial Services Software Limited",
+    "price": 9704.0,
+    "market_cap": 848550000000,
+    "change_pct": -2.34
+  },
+  "AUROPHARMA": {
+    "name": "Aurobindo Pharma Limited",
+    "price": 1446.0,
+    "market_cap": 843210000000,
+    "change_pct": -1.11
+  },
+  "NTPCGREEN": {
+    "name": "NTPC Green Energy Limited",
+    "price": 99.95,
+    "market_cap": 840780000000,
+    "change_pct": -0.9
+  },
+  "ASHOKLEY": {
+    "name": "Ashok Leyland Limited",
+    "price": 141.01,
+    "market_cap": 828330000000,
+    "change_pct": -2.95
+  },
+  "ATGL": {
+    "name": "Adani Total Gas Limited",
+    "price": 734.1,
+    "market_cap": 807480000000,
+    "change_pct": -3.69
+  },
+  "HINDPETRO": {
+    "name": "Hindustan Petroleum Corporation Limited",
+    "price": 372.2,
+    "market_cap": 793150000000,
+    "change_pct": -3.34
+  },
+  "SRF": {
+    "name": "SRF Limited",
+    "price": 2662.1,
+    "market_cap": 792860000000,
+    "change_pct": -1.58
+  },
+  "NMDC": {
+    "name": "NMDC Limited",
+    "price": 89.21,
+    "market_cap": 788010000000,
+    "change_pct": -3.97
+  },
+  "OIL": {
+    "name": "Oil India Limited",
+    "price": 480.0,
+    "market_cap": 782400000000,
+    "change_pct": -0.69
+  },
+  "IDBI": {
+    "name": "IDBI Bank Limited",
+    "price": 71.95,
+    "market_cap": 772560000000,
+    "change_pct": -1.55
+  },
+  "MEESHO": {
+    "name": "Meesho Limited",
+    "price": 167.0,
+    "market_cap": 770510000000,
+    "change_pct": 0.63
+  },
+  "SAIL": {
+    "name": "Steel Authority of India Limited",
+    "price": 183.2,
+    "market_cap": 759110000000,
+    "change_pct": -3.86
+  },
+  "LAURUSLABS": {
+    "name": "Laurus Labs Limited",
+    "price": 1394.0,
+    "market_cap": 758340000000,
+    "change_pct": -3.65
+  },
+  "PERSISTENT": {
+    "name": "Persistent Systems Limited",
+    "price": 5048.0,
+    "market_cap": 755950000000,
+    "change_pct": 0.19
+  },
+  "FEDERALBNK": {
+    "name": "The Federal Bank Limited",
+    "price": 304.2,
+    "market_cap": 751030000000,
+    "change_pct": 0.02
+  },
+  "SUZLON": {
+    "name": "Suzlon Energy Limited",
+    "price": 54.2,
+    "market_cap": 747750000000,
+    "change_pct": -2.01
+  },
+  "FORTIS": {
+    "name": "Fortis Healthcare Limited",
+    "price": 985.5,
+    "market_cap": 746730000000,
+    "change_pct": 1.74
+  },
+  "NYKAA": {
+    "name": "FSN E-Commerce Ventures Limited",
+    "price": 257.9,
+    "market_cap": 745120000000,
+    "change_pct": -1.68
+  },
+  "DABUR": {
+    "name": "Dabur India Limited",
+    "price": 419.65,
+    "market_cap": 744510000000,
+    "change_pct": -1.06
+  },
+  "NHPC": {
+    "name": "NHPC Limited",
+    "price": 73.3,
+    "market_cap": 738410000000,
+    "change_pct": -2.23
+  },
+  "TORNTPOWER": {
+    "name": "Torrent Power Limited",
+    "price": 1449.0,
+    "market_cap": 732880000000,
+    "change_pct": -0.76
+  },
+  "BHARTIHEXA": {
+    "name": "Bharti Hexacom Limited",
+    "price": 1460.3,
+    "market_cap": 727400000000,
+    "change_pct": -1.36
+  },
+  "YESBANK": {
+    "name": "Yes Bank Limited",
+    "price": 22.98,
+    "market_cap": 721870000000,
+    "change_pct": -1.37
+  },
+  "MCX": {
+    "name": "Multi Commodity Exchange of India Limited",
+    "price": 2810.0,
+    "market_cap": 720050000000,
+    "change_pct": 0.54
+  },
+  "AUBANK": {
+    "name": "AU Small Finance Bank Limited",
+    "price": 955.3,
+    "market_cap": 717790000000,
+    "change_pct": -1.45
+  },
+  "HAVELLS": {
+    "name": "Havells India Limited",
+    "price": 1135.0,
+    "market_cap": 715260000000,
+    "change_pct": -1.35
+  },
+  "POLICYBZR": {
+    "name": "PB Fintech Limited",
+    "price": 1510.9,
+    "market_cap": 699550000000,
+    "change_pct": -1.51
+  },
+  "INDUSINDBK": {
+    "name": "IndusInd Bank Limited",
+    "price": 895.5,
+    "market_cap": 697340000000,
+    "change_pct": -1.03
+  },
+  "DIXON": {
+    "name": "Dixon Technologies (India) Limited",
+    "price": 11371.0,
+    "market_cap": 695890000000,
+    "change_pct": -0.53
+  },
+  "NATIONALUM": {
+    "name": "National Aluminium Company Limited",
+    "price": 376.3,
+    "market_cap": 694620000000,
+    "change_pct": -4.9
+  },
+  "ICICIPRULI": {
+    "name": "ICICI Prudential Life Insurance Company Limited",
+    "price": 474.0,
+    "market_cap": 689580000000,
+    "change_pct": -1.91
+  },
+  "BAJAJHFL": {
+    "name": "Bajaj Housing Finance Limited",
+    "price": 82.47,
+    "market_cap": 687670000000,
+    "change_pct": -1.98
+  },
+  "GICRE": {
+    "name": "General Insurance Corporation of India",
+    "price": 384.8,
+    "market_cap": 675360000000,
+    "change_pct": -2.07
+  },
+  "NAM.INDIA": {
+    "name": "Nippon Life India Asset Management Limited",
+    "price": 1055.2,
+    "market_cap": 673730000000,
+    "change_pct": -5.2
+  },
+  "BIOCON": {
+    "name": "Biocon Limited",
+    "price": 407.85,
+    "market_cap": 662320000000,
+    "change_pct": -1.08
+  },
+  "PAYTM": {
+    "name": "One97 Communications Limited",
+    "price": 1033.8,
+    "market_cap": 660470000000,
+    "change_pct": -2.95
+  },
+  "LTF": {
+    "name": "L&T Finance Limited",
+    "price": 260.15,
+    "market_cap": 653360000000,
+    "change_pct": -3.15
+  },
+  "NAUKRI": {
+    "name": "Info Edge (India) Limited",
+    "price": 998.5,
+    "market_cap": 647150000000,
+    "change_pct": 1.02
+  },
+  "ALKEM": {
+    "name": "Alkem Laboratories Limited",
+    "price": 5370.5,
+    "market_cap": 640450000000,
+    "change_pct": 2.27
+  },
+  "BANKINDIA": {
+    "name": "Bank of India Limited",
+    "price": 139.58,
+    "market_cap": 637900000000,
+    "change_pct": -1.33
+  },
+  "IOB": {
+    "name": "Indian Overseas Bank",
+    "price": 32.7,
+    "market_cap": 629880000000,
+    "change_pct": -0.7
+  },
+  "SCHAEFFLER": {
+    "name": "Schaeffler India Limited",
+    "price": 4013.0,
+    "market_cap": 626970000000,
+    "change_pct": -0.55
+  },
+  "SWIGGY": {
+    "name": "Swiggy Limited",
+    "price": 240.7,
+    "market_cap": 625640000000,
+    "change_pct": -3.95
+  },
+  "PHOENIXLTD": {
+    "name": "The Phoenix Mills Limited",
+    "price": 1722.1,
+    "market_cap": 623750000000,
+    "change_pct": -1.66
+  },
+  "IDFCFIRSTB": {
+    "name": "IDFC First Bank Limited",
+    "price": 71.22,
+    "market_cap": 614630000000,
+    "change_pct": -1.56
+  },
+  "GLENMARK": {
+    "name": "Glenmark Pharmaceuticals Limited",
+    "price": 2160.2,
+    "market_cap": 614210000000,
+    "change_pct": -0.28
+  },
+  "MAHABANK": {
+    "name": "Bank of Maharashtra",
+    "price": 79.3,
+    "market_cap": 612320000000,
+    "change_pct": 0.14
+  },
+  "COFORGE": {
+    "name": "Coforge Limited",
+    "price": 1421.0,
+    "market_cap": 610570000000,
+    "change_pct": -1.01
+  },
+  "UNOMINDA": {
+    "name": "Uno Minda Limited",
+    "price": 1051.0,
+    "market_cap": 608520000000,
+    "change_pct": -3.58
+  },
+  "TIINDIA": {
+    "name": "Tube Investments of India Limited",
+    "price": 3031.0,
+    "market_cap": 591550000000,
+    "change_pct": -3.13
+  },
+  "LINDEINDIA": {
+    "name": "Linde India Limited",
+    "price": 6881.0,
+    "market_cap": 586350000000,
+    "change_pct": -1.85
+  },
+  "OBEROIRLTY": {
+    "name": "Oberoi Realty Limited",
+    "price": 1594.4,
+    "market_cap": 581910000000,
+    "change_pct": -2.39
+  },
+  "BERGEPAINT": {
+    "name": "Berger Paints India Limited",
+    "price": 492.5,
+    "market_cap": 572510000000,
+    "change_pct": 0.46
+  },
+  "PRESTIGE": {
+    "name": "Prestige Estates Projects Limited",
+    "price": 1325.0,
+    "market_cap": 571840000000,
+    "change_pct": -4.06
+  },
+  "FACT": {
+    "name": "The Fertilisers and Chemicals Travancore Limited",
+    "price": 864.0,
+    "market_cap": 560590000000,
+    "change_pct": -0.33
+  },
+  "JSWINFRA": {
+    "name": "JSW Infrastructure Limited",
+    "price": 267.35,
+    "market_cap": 559770000000,
+    "change_pct": -3.87
+  },
+  "VMM": {
+    "name": "Vishal Mega Mart Limited",
+    "price": 116.29,
+    "market_cap": 548770000000,
+    "change_pct": -2.06
+  },
+  "JSL": {
+    "name": "Jindal Stainless Limited",
+    "price": 664.85,
+    "market_cap": 548419999999,
+    "change_pct": -3.74
+  },
+  "ABBOTINDIA": {
+    "name": "Abbott India Limited",
+    "price": 25750.0,
+    "market_cap": 548080000000,
+    "change_pct": -1.09
+  },
+  "SBICARD": {
+    "name": "SBI Cards and Payment Services Limited",
+    "price": 575.0,
+    "market_cap": 546740000000,
+    "change_pct": -2.48
+  },
+  "COLPAL": {
+    "name": "Colgate-Palmolive (India) Limited",
+    "price": 2002.8,
+    "market_cap": 546020000000,
+    "change_pct": 0.17
+  },
+  "TATACOMM": {
+    "name": "Tata Communications Limited",
+    "price": 1907.8,
+    "market_cap": 543150000000,
+    "change_pct": -3.29
+  },
+  "MFSL": {
+    "name": "Max Financial Services Limited",
+    "price": 1588.9,
+    "market_cap": 541789999999,
+    "change_pct": -0.95
+  },
+  "APARINDS": {
+    "name": "APAR Industries Limited",
+    "price": 13238.0,
+    "market_cap": 533270000000,
+    "change_pct": -4.61
+  },
+  "THERMAX": {
+    "name": "Thermax Limited",
+    "price": 4678.4,
+    "market_cap": 529000000000,
+    "change_pct": -3.18
+  },
+  "UPL": {
+    "name": "UPL Limited",
+    "price": 623.0,
+    "market_cap": 527809999999,
+    "change_pct": -2.27
+  },
+  "UPLPP1": {
+    "name": "UPL Limited",
+    "price": 515.8,
+    "market_cap": 527809999999,
+    "change_pct": -2.8
+  },
+  "MRF": {
+    "name": "MRF Limited",
+    "price": 122800.0,
+    "market_cap": 520900000000,
+    "change_pct": -0.57
+  },
+  "HDBFS": {
+    "name": "HDB Financial Services Limited",
+    "price": 627.0,
+    "market_cap": 520620000000,
+    "change_pct": -2.33
+  },
+  "KRT": {
+    "name": "Knowledge Realty Trust",
+    "price": 116.53,
+    "market_cap": 516740000000,
+    "change_pct": -0.39
+  },
+  "COROMANDEL": {
+    "name": "Coromandel International Limited",
+    "price": 1753.0,
+    "market_cap": 516600000000,
+    "change_pct": -2.44
+  },
+  "KEI": {
+    "name": "KEI Industries Limited",
+    "price": 5139.5,
+    "market_cap": 510130000000,
+    "change_pct": -3.67
+  },
+  "APLAPOLLO": {
+    "name": "APL Apollo Tubes Limited",
+    "price": 1812.6,
+    "market_cap": 506050000000,
+    "change_pct": -0.55
+  },
+  "GODREJPROP": {
+    "name": "Godrej Properties Limited",
+    "price": 1648.9,
+    "market_cap": 498380000000,
+    "change_pct": -3.48
+  },
+  "PREMIERENE": {
+    "name": "Premier Energies Limited",
+    "price": 1083.0,
+    "market_cap": 495030000000,
+    "change_pct": 0.27
+  },
+  "MOTILALOFS": {
+    "name": "Motilal Oswal Financial Services Limited",
+    "price": 816.9,
+    "market_cap": 494370000000,
+    "change_pct": -4.5
+  },
+  "HINDCOPPER": {
+    "name": "Hindustan Copper Limited",
+    "price": 507.85,
+    "market_cap": 489650000000,
+    "change_pct": -3.51
+  },
+  "RVNL": {
+    "name": "Rail Vikas Nigam Limited",
+    "price": 227.5,
+    "market_cap": 475860000000,
+    "change_pct": -3.44
+  },
+  "RADICO": {
+    "name": "Radico Khaitan Limited",
+    "price": 3461.5,
+    "market_cap": 466740000000,
+    "change_pct": -0.84
+  },
+  "NLCINDIA": {
+    "name": "NLC India Limited",
+    "price": 336.4,
+    "market_cap": 465420000000,
+    "change_pct": -0.06
+  },
+  "PATANJALI": {
+    "name": "Patanjali Foods Limited",
+    "price": 420.0,
+    "market_cap": 456950000000,
+    "change_pct": -0.11
+  },
+  "SUNDARMFIN": {
+    "name": "Sundaram Finance Limited",
+    "price": 4098.8,
+    "market_cap": 452090000000,
+    "change_pct": -0.16
+  },
+  "MPHASIS": {
+    "name": "Mphasis Limited",
+    "price": 2330.0,
+    "market_cap": 445470000000,
+    "change_pct": null
+  },
+  "PIRAMALFIN": {
+    "name": "Piramal Finance Limited",
+    "price": 1964.4,
+    "market_cap": 445290000000,
+    "change_pct": -0.66
+  },
+  "SUPREMEIND": {
+    "name": "The Supreme Industries Limited",
+    "price": 3492.8,
+    "market_cap": 443460000000,
+    "change_pct": -3.03
+  },
+  "BDL": {
+    "name": "Bharat Dynamics Limited",
+    "price": 1184.0,
+    "market_cap": 435110000000,
+    "change_pct": -1.94
+  },
+  "ANTHEM": {
+    "name": "Anthem Biosciences Limited",
+    "price": 774.0,
+    "market_cap": 434180000000,
+    "change_pct": 1.64
+  },
+  "PAGEIND": {
+    "name": "Page Industries Limited",
+    "price": 38425.0,
+    "market_cap": 429980000000,
+    "change_pct": 0.21
+  },
+  "360ONE": {
+    "name": "360 One Wam Limited",
+    "price": 1052.2,
+    "market_cap": 428600000000,
+    "change_pct": -2.02
+  },
+  "AIAENG": {
+    "name": "AIA Engineering Limited",
+    "price": 4545.0,
+    "market_cap": 424190000000,
+    "change_pct": -1.85
+  },
+  "VOLTAS": {
+    "name": "Voltas Limited",
+    "price": 1270.0,
+    "market_cap": 422280000000,
+    "change_pct": -2.18
+  },
+  "IPCALAB": {
+    "name": "Ipca Laboratories Limited",
+    "price": 1645.0,
+    "market_cap": 418460000000,
+    "change_pct": 0.19
+  },
+  "IRCTC": {
+    "name": "Indian Railway Catering & Tourism Corporation Limited",
+    "price": 515.95,
+    "market_cap": 412880000000,
+    "change_pct": -2.39
+  },
+  "HUDCO": {
+    "name": "Housing and Urban Development Corporation Limited",
+    "price": 203.9,
+    "market_cap": 408630000000,
+    "change_pct": -0.99
+  },
+  "PIIND": {
+    "name": "PI Industries Limited",
+    "price": 2685.2,
+    "market_cap": 406780000000,
+    "change_pct": -1.2
+  },
+  "ASTRAL": {
+    "name": "Astral Limited",
+    "price": 1505.0,
+    "market_cap": 405980000000,
+    "change_pct": -0.91
+  },
+  "BALKRISIND": {
+    "name": "Balkrishna Industries Limited",
+    "price": 2089.0,
+    "market_cap": 404890000000,
+    "change_pct": -2.47
+  },
+  "EMBASSY": {
+    "name": "Embassy Office Parks REIT",
+    "price": 426.11,
+    "market_cap": 403910000000,
+    "change_pct": -0.49
+  },
+  "CPPLUS": {
+    "name": "Aditya Infotech Limited",
+    "price": 3400.0,
+    "market_cap": 403290000000,
+    "change_pct": -2.91
+  },
+  "PETRONET": {
+    "name": "Petronet LNG Limited",
+    "price": 267.85,
+    "market_cap": 401030000000,
+    "change_pct": -0.59
+  },
+  "ASTERDM": {
+    "name": "Aster DM Healthcare Limited",
+    "price": 764.8,
+    "market_cap": 395960000000,
+    "change_pct": 1.43
+  },
+  "NH": {
+    "name": "Narayana Hrudayalaya Limited",
+    "price": 1917.0,
+    "market_cap": 390240000000,
+    "change_pct": -2.65
+  },
+  "M_MFIN": {
+    "name": "Mahindra & Mahindra Financial Services Limited",
+    "price": 280.75,
+    "market_cap": 390100000000,
+    "change_pct": -3.14
+  },
+  "AIIL": {
+    "name": "Authum Investment & Infrastructure Limited",
+    "price": 451.3,
+    "market_cap": 387500000000,
+    "change_pct": -2.46
+  },
+  "ATHERENERG": {
+    "name": "Ather Energy Limited",
+    "price": 1002.9,
+    "market_cap": 383840000000,
+    "change_pct": -2.97
+  },
+  "FLUOROCHEM": {
+    "name": "Gujarat Fluorochemicals Limited",
+    "price": 3480.0,
+    "market_cap": 383660000000,
+    "change_pct": -2.21
+  },
+  "AJANTPHARM": {
+    "name": "Ajanta Pharma Limited",
+    "price": 2970.0,
+    "market_cap": 370770000000,
+    "change_pct": -0.22
+  },
+  "GLAND": {
+    "name": "Gland Pharma Limited",
+    "price": 2246.0,
+    "market_cap": 370340000000,
+    "change_pct": -1.19
+  },
+  "COCHINSHIP": {
+    "name": "Cochin Shipyard Limited",
+    "price": 1402.0,
+    "market_cap": 370180000000,
+    "change_pct": -2.58
+  },
+  "GLAXO": {
+    "name": "GlaxoSmithKline Pharmaceuticals Limited",
+    "price": 2183.0,
+    "market_cap": 369900000000,
+    "change_pct": 0.87
+  },
+  "JKCEMENT": {
+    "name": "J.K. Cement Limited",
+    "price": 4760.0,
+    "market_cap": 368170000000,
+    "change_pct": -3.79
+  },
+  "SONACOMS": {
+    "name": "Sona BLW Precision Forgings Limited",
+    "price": 587.0,
+    "market_cap": 365910000000,
+    "change_pct": -2.54
+  },
+  "KALYANKJIL": {
+    "name": "Kalyan Jewellers India Limited",
+    "price": 353.15,
+    "market_cap": 365800000000,
+    "change_pct": -5.03
+  },
+  "3MINDIA": {
+    "name": "3M India Limited",
+    "price": 31600.0,
+    "market_cap": 355230000000,
+    "change_pct": -1.23
+  },
+  "KPRMILL": {
+    "name": "K.P.R. Mill Limited",
+    "price": 1030.0,
+    "market_cap": 354750000000,
+    "change_pct": -5.2
+  },
+  "WELCORP": {
+    "name": "Welspun Corp Limited",
+    "price": 1340.0,
+    "market_cap": 354430000000,
+    "change_pct": -3.51
+  },
+  "ENDURANCE": {
+    "name": "Endurance Technologies Limited",
+    "price": 2490.0,
+    "market_cap": 353560000000,
+    "change_pct": -2.56
+  },
+  "BAGMANE": {
+    "name": "Bagmane Prime Office REIT",
+    "price": 103.73,
+    "market_cap": 352680000000,
+    "change_pct": 0.37
+  },
+  "NAVINFLUOR": {
+    "name": "Navin Fluorine International Limited",
+    "price": 6819.0,
+    "market_cap": 352090000000,
+    "change_pct": -3.04
+  },
+  "JBCHEPHARM": {
+    "name": "J. B. Chemicals & Pharmaceuticals Limited",
+    "price": 2179.9,
+    "market_cap": 348750000000,
+    "change_pct": 0.49
+  },
+  "GODREJIND": {
+    "name": "Godrej Industries Limited",
+    "price": 1031.1,
+    "market_cap": 348100000000,
+    "change_pct": -1.1
+  },
+  "UBL": {
+    "name": "United Breweries Limited",
+    "price": 1312.0,
+    "market_cap": 347420000000,
+    "change_pct": -0.91
+  },
+  "GODFRYPHLP": {
+    "name": "Godfrey Phillips India Limited",
+    "price": 2176.0,
+    "market_cap": 339810000000,
+    "change_pct": -1.99
+  },
+  "CONCOR": {
+    "name": "Container Corporation of India Limited",
+    "price": 444.5,
+    "market_cap": 339190000000,
+    "change_pct": -1.43
+  },
+  "IREDA": {
+    "name": "Indian Renewable Energy Development Agency Limited",
+    "price": 119.9,
+    "market_cap": 337560000000,
+    "change_pct": -2.86
+  },
+  "HSCL": {
+    "name": "Himadri Speciality Chemical Limited",
+    "price": 656.5,
+    "market_cap": 337060000000,
+    "change_pct": -4.17
+  },
+  "LTTS": {
+    "name": "L&T Technology Services Limited",
+    "price": 3165.7,
+    "market_cap": 335730000000,
+    "change_pct": -1.46
+  },
+  "POONAWALLA": {
+    "name": "Poonawalla Fincorp Limited",
+    "price": 381.5,
+    "market_cap": 335440000000,
+    "change_pct": -2.14
+  },
+  "DELHIVERY": {
+    "name": "Delhivery Limited",
+    "price": 437.35,
+    "market_cap": 328950000000,
+    "change_pct": -1.77
+  },
+  "TATAINVEST": {
+    "name": "Tata Investment Corporation Limited",
+    "price": 646.6,
+    "market_cap": 327930000000,
+    "change_pct": -3.45
+  },
+  "EXIDEIND": {
+    "name": "Exide Industries Limited",
+    "price": 385.9,
+    "market_cap": 327850000000,
+    "change_pct": -3.42
+  },
+  "BANDHANBNK": {
+    "name": "Bandhan Bank Limited",
+    "price": 202.62,
+    "market_cap": 326890000000,
+    "change_pct": -1.58
+  },
+  "EMCURE": {
+    "name": "Emcure Pharmaceuticals Limited",
+    "price": 1720.0,
+    "market_cap": 326020000000,
+    "change_pct": -2.09
+  },
+  "MEDANTA": {
+    "name": "Global Health Limited",
+    "price": 1210.0,
+    "market_cap": 325420000000,
+    "change_pct": -2.42
+  },
+  "KIMS": {
+    "name": "Krishna Institute of Medical Sciences Limited",
+    "price": 790.5,
+    "market_cap": 320590000000,
+    "change_pct": 0.2
+  },
+  "BLUESTARCO": {
+    "name": "Blue Star Limited",
+    "price": 1555.0,
+    "market_cap": 319250000000,
+    "change_pct": -1.69
+  },
+  "HEXT": {
+    "name": "Hexaware Technologies Limited",
+    "price": 521.4,
+    "market_cap": 317010000000,
+    "change_pct": -0.87
+  },
+  "TATATECH": {
+    "name": "Tata Technologies Limited",
+    "price": 776.35,
+    "market_cap": 316560000000,
+    "change_pct": 0.67
+  },
+  "UCOBANK": {
+    "name": "UCO Bank",
+    "price": 25.03,
+    "market_cap": 313870000000,
+    "change_pct": -0.91
+  },
+  "ITCHOTELS": {
+    "name": "ITC Hotels Limited",
+    "price": 150.1,
+    "market_cap": 313200000000,
+    "change_pct": -2.01
+  },
+  "ESCORTS": {
+    "name": "Escorts Kubota Limited",
+    "price": 2800.0,
+    "market_cap": 313110000000,
+    "change_pct": 0.67
+  },
+  "DALBHARAT": {
+    "name": "Dalmia Bharat Limited",
+    "price": 1660.4,
+    "market_cap": 312110000000,
+    "change_pct": -1.67
+  },
+  "WOCKPHARMA": {
+    "name": "Wockhardt Limited",
+    "price": 1897.0,
+    "market_cap": 307580000000,
+    "change_pct": -1.24
+  },
+  "HONAUT": {
+    "name": "Honeywell Automation India Limited",
+    "price": 34890.0,
+    "market_cap": 306370000000,
+    "change_pct": 0.55
+  },
+  "STARHEALTH": {
+    "name": "Star Health and Allied Insurance Company Limited",
+    "price": 514.95,
+    "market_cap": 305000000000,
+    "change_pct": -2.1
+  },
+  "MINDSPACE": {
+    "name": "Mindspace Business Parks REIT",
+    "price": 345.06,
+    "market_cap": 304490000000,
+    "change_pct": 1.51
+  },
+  "ABSLAMC": {
+    "name": "Aditya Birla Sun Life AMC Limited",
+    "price": 1049.0,
+    "market_cap": 301870000000,
+    "change_pct": 0.02
+  },
+  "PWL": {
+    "name": "Physicswallah Limited",
+    "price": 102.73,
+    "market_cap": 301780000000,
+    "change_pct": -3.5
+  },
+  "GRSE": {
+    "name": "Garden Reach Shipbuilders & Engineers Limited",
+    "price": 2608.8,
+    "market_cap": 299100000000,
+    "change_pct": -1.88
+  },
+  "LICHSGFIN": {
+    "name": "LIC Housing Finance Limited",
+    "price": 539.75,
+    "market_cap": 297580000000,
+    "change_pct": -1.82
+  },
+  "ANGELONE": {
+    "name": "Angel One Limited",
+    "price": 323.95,
+    "market_cap": 297040000000,
+    "change_pct": -2.6
+  },
+  "PGHH": {
+    "name": "Procter & Gamble Hygiene and Health Care Limited",
+    "price": 9157.5,
+    "market_cap": 296780000000,
+    "change_pct": -2.58
+  },
+  "ANANDRATHI": {
+    "name": "Anand Rathi Wealth Limited",
+    "price": 1754.0,
+    "market_cap": 291240000000,
+    "change_pct": 0.04
+  },
+  "STLTECH": {
+    "name": "Sterlite Technologies Limited",
+    "price": 588.3,
+    "market_cap": 287220000000,
+    "change_pct": -5.0
+  },
+  "ITI": {
+    "name": "ITI Limited",
+    "price": 294.0,
+    "market_cap": 285430000000,
+    "change_pct": -2.65
+  },
+  "IKS": {
+    "name": "Inventurus Knowledge Solutions Limited",
+    "price": 1654.2,
+    "market_cap": 284670000000,
+    "change_pct": -0.3
+  },
+  "SJVN": {
+    "name": "SJVN Limited",
+    "price": 72.23,
+    "market_cap": 284080000000,
+    "change_pct": -1.97
+  },
+  "MANAPPURAM": {
+    "name": "Manappuram Finance Limited",
+    "price": 297.3,
+    "market_cap": 280770000000,
+    "change_pct": -3.54
+  },
+  "NUVAMA": {
+    "name": "Nuvama Wealth Management Limited",
+    "price": 1513.6,
+    "market_cap": 280630000000,
+    "change_pct": -3.86
+  },
+  "GODIGIT": {
+    "name": "Go Digit General Insurance Limited",
+    "price": 303.2,
+    "market_cap": 280620000000,
+    "change_pct": -1.11
+  },
+  "NBCC": {
+    "name": "NBCC (India) Limited",
+    "price": 103.08,
+    "market_cap": 279180000000,
+    "change_pct": -3.08
+  },
+  "CRISIL": {
+    "name": "CRISIL Limited",
+    "price": 3799.0,
+    "market_cap": 278330000000,
+    "change_pct": -2.06
+  },
+  "CENTRALBK": {
+    "name": "Central Bank of India",
+    "price": 30.48,
+    "market_cap": 275430000000,
+    "change_pct": 0.33
+  },
+  "GUJGASLTD": {
+    "name": "Gujarat Energy Limited",
+    "price": 400.05,
+    "market_cap": 275360000000,
+    "change_pct": -0.11
+  },
+  "PTCIL": {
+    "name": "PTC Industries Limited",
+    "price": 18280.0,
+    "market_cap": 273670000000,
+    "change_pct": -1.31
+  },
+  "SCHNEIDER": {
+    "name": "Schneider Electric Infrastructure Limited",
+    "price": 1134.0,
+    "market_cap": 273269999999,
+    "change_pct": -3.26
+  },
+  "AMBER": {
+    "name": "Amber Enterprises India Limited",
+    "price": 7695.0,
+    "market_cap": 272950000000,
+    "change_pct": -1.62
+  },
+  "SHYAMMETL": {
+    "name": "Shyam Metalics and Energy Limited",
+    "price": 980.0,
+    "market_cap": 272390000000,
+    "change_pct": -2.13
+  },
+  "HFCL": {
+    "name": "HFCL Limited",
+    "price": 177.87,
+    "market_cap": 272250000000,
+    "change_pct": -5.0
+  },
+  "KARURVYSYA": {
+    "name": "The Karur Vysya Bank Limited",
+    "price": 281.4,
+    "market_cap": 272019999999,
+    "change_pct": 0.73
+  },
+  "JUBLFOOD": {
+    "name": "Jubilant FoodWorks Limited",
+    "price": 412.2,
+    "market_cap": 271680000000,
+    "change_pct": -3.51
+  },
+  "ACUTAAS": {
+    "name": "Acutaas Chemicals Limited",
+    "price": 3305.0,
+    "market_cap": 271500000000,
+    "change_pct": -0.7
+  },
+  "TVSHLTD": {
+    "name": "TVS Holdings Limited",
+    "price": 13378.0,
+    "market_cap": 270459999999,
+    "change_pct": -1.51
+  },
+  "METROBRAND": {
+    "name": "Metro Brands Limited",
+    "price": 990.0,
+    "market_cap": 270089999999,
+    "change_pct": -3.26
+  },
+  "ZFCVINDIA": {
+    "name": "ZF Commercial Vehicle Control Systems India Limited",
+    "price": 14205.0,
+    "market_cap": 269640000000,
+    "change_pct": -1.55
+  },
+  "KIRLOSENG": {
+    "name": "Kirloskar Oil Engines Limited",
+    "price": 1840.0,
+    "market_cap": 269510000000,
+    "change_pct": -3.83
+  },
+  "TIMKEN": {
+    "name": "Timken India Limited",
+    "price": 3590.0,
+    "market_cap": 268880000000,
+    "change_pct": -1.47
+  },
+  "MRPL": {
+    "name": "Mangalore Refinery and Petrochemicals Limited",
+    "price": 151.5,
+    "market_cap": 265519999999,
+    "change_pct": -2.19
+  },
+  "CHOLAHLDNG": {
+    "name": "Cholamandalam Financial Holdings Limited",
+    "price": 1415.0,
+    "market_cap": 265200000000,
+    "change_pct": -2.35
+  },
+  "AEGISLOG": {
+    "name": "Aegis Logistics Limited",
+    "price": 755.0,
+    "market_cap": 265200000000,
+    "change_pct": -2.0
+  },
+  "TATAELXSI": {
+    "name": "Tata Elxsi Limited",
+    "price": 4237.3,
+    "market_cap": 265190000000,
+    "change_pct": -1.48
+  },
+  "BIRET": {
+    "name": "Brookfield India Real Estate Trust",
+    "price": 263.49,
+    "market_cap": 264750000000,
+    "change_pct": 0.42
+  },
+  "LALPATHLAB": {
+    "name": "Dr. Lal PathLabs Limited",
+    "price": 1545.0,
+    "market_cap": 258459999999,
+    "change_pct": 0.53
+  },
+  "SAILIFE": {
+    "name": "Sai Life Sciences Limited",
+    "price": 1187.1,
+    "market_cap": 253280000000,
+    "change_pct": 0.06
+  },
+  "PNBHOUSING": {
+    "name": "PNB Housing Finance Limited",
+    "price": 968.6,
+    "market_cap": 252800000000,
+    "change_pct": -2.92
+  },
+  "CDSL": {
+    "name": "Central Depository Services (India) Limited",
+    "price": 1189.0,
+    "market_cap": 249420000000,
+    "change_pct": -2.34
+  },
+  "IRB": {
+    "name": "IRB Infrastructure Developers Limited",
+    "price": 20.5,
+    "market_cap": 249410000000,
+    "change_pct": -3.16
+  },
+  "ACMESOLAR": {
+    "name": "ACME Solar Holdings Limited",
+    "price": 349.55,
+    "market_cap": 248740000000,
+    "change_pct": -1.99
+  },
+  "MSUMI": {
+    "name": "Motherson Sumi Wiring India Limited",
+    "price": 37.5,
+    "market_cap": 248490000000,
+    "change_pct": -2.8
+  },
+  "GILLETTE": {
+    "name": "Gillette India Limited",
+    "price": 7610.0,
+    "market_cap": 248430000000,
+    "change_pct": -1.97
+  },
+  "ACC": {
+    "name": "ACC Limited",
+    "price": 1315.0,
+    "market_cap": 247820000000,
+    "change_pct": -1.11
+  },
+  "NIACL": {
+    "name": "The New India Assurance Company Limited",
+    "price": 149.0,
+    "market_cap": 246440000000,
+    "change_pct": -1.66
+  },
+  "APOLLOTYRE": {
+    "name": "Apollo Tyres Limited",
+    "price": 384.45,
+    "market_cap": 244420000000,
+    "change_pct": -3.11
+  },
+  "RRKABEL": {
+    "name": "R R Kabel Limited",
+    "price": 2131.9,
+    "market_cap": 243700000000,
+    "change_pct": -4.12
+  },
+  "NETWEB": {
+    "name": "Netweb Technologies India Limited",
+    "price": 4277.0,
+    "market_cap": 242820000000,
+    "change_pct": -8.34
+  },
+  "AWL": {
+    "name": "AWL Agri Business Limited",
+    "price": 185.75,
+    "market_cap": 240550000000,
+    "change_pct": -1.66
+  },
+  "NXST": {
+    "name": "Nexus Select Trust",
+    "price": 162.86,
+    "market_cap": 237160000000,
+    "change_pct": 1.07
+  },
+  "KIOCL": {
+    "name": "KIOCL Limited",
+    "price": 387.0,
+    "market_cap": 235810000000,
+    "change_pct": -4.55
+  },
+  "TENNIND": {
+    "name": "Tenneco Clean Air India Limited",
+    "price": 575.9,
+    "market_cap": 232440000000,
+    "change_pct": -2.23
+  },
+  "DATAPATTNS": {
+    "name": "Data Patterns (India) Limited",
+    "price": 4135.0,
+    "market_cap": 231850000000,
+    "change_pct": -1.84
+  },
+  "SYRMA": {
+    "name": "Syrma SGS Technology Limited",
+    "price": 1190.0,
+    "market_cap": 231380000000,
+    "change_pct": -3.0
+  },
+  "CESC": {
+    "name": "CESC Limited",
+    "price": 174.0,
+    "market_cap": 231300000000,
+    "change_pct": -2.58
+  },
+  "SUMICHEM": {
+    "name": "Sumitomo Chemical India Limited",
+    "price": 459.25,
+    "market_cap": 229680000000,
+    "change_pct": -2.71
+  },
+  "IGL": {
+    "name": "Indraprastha Gas Limited",
+    "price": 163.0,
+    "market_cap": 229070000000,
+    "change_pct": -0.8
+  },
+  "EMMVEE": {
+    "name": "Emmvee Photovoltaic Power Limited",
+    "price": 330.05,
+    "market_cap": 228510000000,
+    "change_pct": -1.29
+  },
+  "FORCEMOT": {
+    "name": "Force Motors Limited",
+    "price": 17193.0,
+    "market_cap": 227860000000,
+    "change_pct": -5.76
+  },
+  "DEEPAKNTR": {
+    "name": "Deepak Nitrite Limited",
+    "price": 1653.0,
+    "market_cap": 225410000000,
+    "change_pct": -1.61
+  },
+  "ASAHIINDIA": {
+    "name": "Asahi India Glass Limited",
+    "price": 867.0,
+    "market_cap": 223710000000,
+    "change_pct": -3.87
+  },
+  "PPLPHARMA": {
+    "name": "Piramal Pharma Limited",
+    "price": 165.75,
+    "market_cap": 219550000000,
+    "change_pct": -0.61
+  },
+  "GRINDWELL": {
+    "name": "Grindwell Norton Limited",
+    "price": 1968.9,
+    "market_cap": 217600000000,
+    "change_pct": 0.55
+  },
+  "NEULANDLAB": {
+    "name": "Neuland Laboratories Limited",
+    "price": 16882.0,
+    "market_cap": 217590000000,
+    "change_pct": 0.42
+  },
+  "MTARTECH": {
+    "name": "MTAR Technologies Limited",
+    "price": 7059.0,
+    "market_cap": 216920000000,
+    "change_pct": -6.32
+  },
+  "KPIL": {
+    "name": "Kalpataru Projects International Limited",
+    "price": 1265.0,
+    "market_cap": 216350000000,
+    "change_pct": -1.96
+  },
+  "CRAFTSMAN": {
+    "name": "Craftsman Automation Limited",
+    "price": 8913.5,
+    "market_cap": 214130000000,
+    "change_pct": -1.67
+  },
+  "RBLBANK": {
+    "name": "RBL Bank Limited",
+    "price": 344.6,
+    "market_cap": 213420000000,
+    "change_pct": -1.92
+  },
+  "HBLENGINE": {
+    "name": "HBL Engineering Limited",
+    "price": 764.0,
+    "market_cap": 212190000000,
+    "change_pct": -3.89
+  },
+  "AFFLE": {
+    "name": "Affle 3i Limited",
+    "price": 1492.9,
+    "market_cap": 210460000000,
+    "change_pct": 1.14
+  },
+  "TRITURBINE": {
+    "name": "Triveni Turbine Limited",
+    "price": 658.0,
+    "market_cap": 209600000000,
+    "change_pct": -4.21
+  },
+  "ASTRAZEN": {
+    "name": "AstraZeneca Pharma India Limited",
+    "price": 8419.0,
+    "market_cap": 209590000000,
+    "change_pct": -2.1
+  },
+  "IIFL": {
+    "name": "IIFL Finance Limited",
+    "price": 491.0,
+    "market_cap": 209190000000,
+    "change_pct": -5.01
+  },
+  "PFIZER": {
+    "name": "Pfizer Limited",
+    "price": 4501.0,
+    "market_cap": 207140000000,
+    "change_pct": 1.0
+  },
+  "OLAELEC": {
+    "name": "Ola Electric Mobility Limited",
+    "price": 45.02,
+    "market_cap": 205640000000,
+    "change_pct": 0.31
+  },
+  "KPITTECH": {
+    "name": "KPIT Technologies Limited",
+    "price": 752.0,
+    "market_cap": 205610000000,
+    "change_pct": -3.32
+  },
+  "GESHIP": {
+    "name": "The Great Eastern Shipping Company Limited",
+    "price": 1433.0,
+    "market_cap": 204510000000,
+    "change_pct": -2.12
+  },
+  "AEGISVOPAK": {
+    "name": "Aegis Vopak Terminals Limited",
+    "price": 183.5,
+    "market_cap": 204160000000,
+    "change_pct": -3.52
+  },
+  "KAYNES": {
+    "name": "Kaynes Technology India Limited",
+    "price": 3030.0,
+    "market_cap": 202950000000,
+    "change_pct": -2.94
+  },
+  "SAMMAANCAP": {
+    "name": "Sammaan Capital Limited",
+    "price": 176.07,
+    "market_cap": 202180000000,
+    "change_pct": -4.46
+  },
+  "RAMCOCEM": {
+    "name": "The Ramco Cements Limited",
+    "price": 853.1,
+    "market_cap": 202030000000,
+    "change_pct": -3.13
+  },
+  "CARBORUNIV": {
+    "name": "Carborundum Universal Limited",
+    "price": 1056.9,
+    "market_cap": 200870000000,
+    "change_pct": 1.64
+  },
+  "AADHARHFC": {
+    "name": "Aadhar Housing Finance Limited",
+    "price": 461.9,
+    "market_cap": 200620000000,
+    "change_pct": -1.34
+  },
+  "SUNTV": {
+    "name": "Sun TV Network Limited",
+    "price": 507.0,
+    "market_cap": 200000000000,
+    "change_pct": -1.85
+  },
+  "ONESOURCE": {
+    "name": "OneSource Specialty Pharma Limited",
+    "price": 1715.0,
+    "market_cap": 199230000000,
+    "change_pct": -4.17
+  },
+  "CREDITACC": {
+    "name": "CreditAccess Grameen Limited",
+    "price": 1239.7,
+    "market_cap": 199100000000,
+    "change_pct": -1.92
+  },
+  "HATSUN": {
+    "name": "Hatsun Agro Product Limited",
+    "price": 890.5,
+    "market_cap": 198950000000,
+    "change_pct": -0.7
+  },
+  "IFCI": {
+    "name": "IFCI Limited",
+    "price": 73.52,
+    "market_cap": 198840000000,
+    "change_pct": -7.64
+  },
+  "RUBICON": {
+    "name": "Rubicon Research Limited",
+    "price": 1181.4,
+    "market_cap": 194640000000,
+    "change_pct": -1.76
+  },
+  "ATUL": {
+    "name": "Atul Ltd",
+    "price": 6700.0,
+    "market_cap": 194400000000,
+    "change_pct": 0.32
+  },
+  "GMDCLTD": {
+    "name": "Gujarat Mineral Development Corporation Limited",
+    "price": 608.0,
+    "market_cap": 193870000000,
+    "change_pct": -7.56
+  },
+  "ANANTRAJ": {
+    "name": "Anant Raj Limited",
+    "price": 537.0,
+    "market_cap": 193450000000,
+    "change_pct": -5.8
+  },
+  "BAYERCROP": {
+    "name": "Bayer CropScience Limited",
+    "price": 4275.0,
+    "market_cap": 192540000000,
+    "change_pct": -1.73
+  },
+  "PFOCUS": {
+    "name": "Prime Focus Limited",
+    "price": 245.5,
+    "market_cap": 192070000000,
+    "change_pct": 2.21
+  },
+  "BELRISE": {
+    "name": "Belrise Industries Limited",
+    "price": 214.85,
+    "market_cap": 191960000000,
+    "change_pct": -0.52
+  },
+  "TDPOWERSYS": {
+    "name": "TD Power Systems Limited",
+    "price": 1225.7,
+    "market_cap": 191700000000,
+    "change_pct": -6.63
+  },
+  "CGCL": {
+    "name": "Capri Global Capital Limited",
+    "price": 198.01,
+    "market_cap": 191230000000,
+    "change_pct": -2.35
+  },
+  "GRANULES": {
+    "name": "Granules India Limited",
+    "price": 767.95,
+    "market_cap": 190060000000,
+    "change_pct": -2.77
+  },
+  "SARDAEN": {
+    "name": "Sarda Energy & Minerals Limited",
+    "price": 538.0,
+    "market_cap": 189620000000,
+    "change_pct": -1.56
+  },
+  "ERIS": {
+    "name": "Eris Lifesciences Limited",
+    "price": 1371.7,
+    "market_cap": 189160000000,
+    "change_pct": 0.48
+  },
+  "CUPID": {
+    "name": "Cupid Limited",
+    "price": 140.43,
+    "market_cap": 188790000000,
+    "change_pct": 2.43
+  },
+  "ELGIEQUIP": {
+    "name": "Elgi Equipments Limited",
+    "price": 593.45,
+    "market_cap": 188490000000,
+    "change_pct": -2.76
+  },
+  "CEMPRO": {
+    "name": "Cemindia Projects Limited",
+    "price": 1094.4,
+    "market_cap": 187990000000,
+    "change_pct": -1.65
+  },
+  "GPIL": {
+    "name": "Godawari Power & Ispat Limited",
+    "price": 277.7,
+    "market_cap": 187490000000,
+    "change_pct": -0.89
+  },
+  "BBOX": {
+    "name": "Black Box Limited",
+    "price": 999.8,
+    "market_cap": 186670000000,
+    "change_pct": -6.81
+  },
+  "URBANCO": {
+    "name": "Urban Company Limited",
+    "price": 120.8,
+    "market_cap": 185450000000,
+    "change_pct": -3.71
+  },
+  "CAMS": {
+    "name": "Computer Age Management Services Limited",
+    "price": 737.9,
+    "market_cap": 183550000000,
+    "change_pct": -3.04
+  },
+  "CUB": {
+    "name": "City Union Bank Limited",
+    "price": 245.45,
+    "market_cap": 183530000000,
+    "change_pct": 0.25
+  },
+  "DEEPAKFERT": {
+    "name": "Deepak Fertilisers And Petrochemicals Corporation Limited",
+    "price": 1451.4,
+    "market_cap": 183370000000,
+    "change_pct": 1.8
+  },
+  "TATACHEM": {
+    "name": "Tata Chemicals Limited",
+    "price": 710.0,
+    "market_cap": 182630000000,
+    "change_pct": -1.29
+  },
+  "SAGILITY": {
+    "name": "Sagility Limited",
+    "price": 38.99,
+    "market_cap": 182570000000,
+    "change_pct": -2.57
+  },
+  "BHARATCOAL": {
+    "name": "Bharat Coking Coal Limited",
+    "price": 41.72,
+    "market_cap": 182000000000,
+    "change_pct": 0.7
+  },
+  "SANSERA": {
+    "name": "Sansera Engineering Limited",
+    "price": 2895.1,
+    "market_cap": 181130000000,
+    "change_pct": -1.7
+  },
+  "CASTROLIND": {
+    "name": "Castrol India Limited",
+    "price": 183.07,
+    "market_cap": 181060000000,
+    "change_pct": -0.25
+  },
+  "CHAMBLFERT": {
+    "name": "Chambal Fertilisers and Chemicals Limited",
+    "price": 448.95,
+    "market_cap": 179770000000,
+    "change_pct": -4.01
+  },
+  "REDINGTON": {
+    "name": "Redington Limited",
+    "price": 229.6,
+    "market_cap": 179450000000,
+    "change_pct": -3.94
+  },
+  "VTL": {
+    "name": "Vardhman Textiles Limited",
+    "price": 617.7,
+    "market_cap": 179050000000,
+    "change_pct": -2.17
+  },
+  "SYNGENE": {
+    "name": "Syngene International Limited",
+    "price": 446.25,
+    "market_cap": 178950000000,
+    "change_pct": 2.76
+  },
+  "EIHOTEL": {
+    "name": "EIH Limited",
+    "price": 285.4,
+    "market_cap": 178570000000,
+    "change_pct": -2.24
+  },
+  "RATNAMANI": {
+    "name": "Ratnamani Metals & Tubes Limited",
+    "price": 2540.0,
+    "market_cap": 178530000000,
+    "change_pct": -2.86
+  },
+  "CHENNPETRO": {
+    "name": "Chennai Petroleum Corporation Limited",
+    "price": 1191.0,
+    "market_cap": 175860000000,
+    "change_pct": 0.81
+  },
+  "FSL": {
+    "name": "Firstsource Solutions Limited",
+    "price": 250.2,
+    "market_cap": 174460000000,
+    "change_pct": -6.64
+  },
+  "JSWCEMENT": {
+    "name": "JSW Cement Limited",
+    "price": 127.0,
+    "market_cap": 172450000000,
+    "change_pct": -0.29
+  },
+  "SUNDRMFAST": {
+    "name": "Sundram Fasteners Limited",
+    "price": 815.85,
+    "market_cap": 172010000000,
+    "change_pct": -2.89
+  },
+  "KAJARIACER": {
+    "name": "Kajaria Ceramics Limited",
+    "price": 1073.0,
+    "market_cap": 170930000000,
+    "change_pct": -1.0
+  },
+  "KANSAINER": {
+    "name": "Kansai Nerolac Paints Limited",
+    "price": 209.0,
+    "market_cap": 170710000000,
+    "change_pct": -0.9
+  },
+  "THANGAMAYL": {
+    "name": "Thangamayil Jewellery Limited",
+    "price": 5449.7,
+    "market_cap": 170690000000,
+    "change_pct": 1.83
+  },
+  "EMAMILTD": {
+    "name": "Emami Limited",
+    "price": 386.0,
+    "market_cap": 168100000000,
+    "change_pct": 0.31
+  },
+  "CMPDI": {
+    "name": "Central Mine Planning & Design Institute Limited",
+    "price": 237.28,
+    "market_cap": 167610000000,
+    "change_pct": 2.39
+  },
+  "CENTURYPLY": {
+    "name": "Century Plyboards (India) Limited",
+    "price": 750.0,
+    "market_cap": 166850000000,
+    "change_pct": -2.03
+  },
+  "LMW": {
+    "name": "LMW Limited",
+    "price": 15599.0,
+    "market_cap": 166660000000,
+    "change_pct": -0.51
+  },
+  "ZYDUSWELL": {
+    "name": "Zydus Wellness Limited",
+    "price": 528.0,
+    "market_cap": 166620000000,
+    "change_pct": 4.64
+  },
+  "CIEINDIA": {
+    "name": "CIE Automotive India Limited",
+    "price": 436.6,
+    "market_cap": 166070000000,
+    "change_pct": -3.42
+  },
+  "NAVA": {
+    "name": "Nava Limited",
+    "price": 585.2,
+    "market_cap": 165950000000,
+    "change_pct": -1.73
+  },
+  "CROMPTON": {
+    "name": "Crompton Greaves Consumer Electricals Limited",
+    "price": 256.0,
+    "market_cap": 165420000000,
+    "change_pct": -3.98
+  },
+  "CHALET": {
+    "name": "Chalet Hotels Limited",
+    "price": 749.0,
+    "market_cap": 164390000000,
+    "change_pct": -3.66
+  },
+  "PINELABS": {
+    "name": "Pine Labs Limited",
+    "price": 142.75,
+    "market_cap": 163920000000,
+    "change_pct": -1.19
+  },
+  "PSB": {
+    "name": "Punjab & Sind Bank",
+    "price": 23.1,
+    "market_cap": 163910000000,
+    "change_pct": -2.45
+  },
+  "BIKAJI": {
+    "name": "Bikaji Foods International Limited",
+    "price": 650.0,
+    "market_cap": 163890000000,
+    "change_pct": -0.76
+  },
+  "INDIGRID": {
+    "name": "Indigrid Infrastructure Trust",
+    "price": 171.51,
+    "market_cap": 163560000000,
+    "change_pct": -0.21
+  },
+  "J_KBANK": {
+    "name": "Jammu and Kashmir Bank Limited",
+    "price": 148.16,
+    "market_cap": 163150000000,
+    "change_pct": 0.43
+  },
+  "COHANCE": {
+    "name": "Cohance Lifesciences Limited",
+    "price": 423.85,
+    "market_cap": 162320000000,
+    "change_pct": -1.68
+  },
+  "FRACTAL": {
+    "name": "Fractal Analytics Limited",
+    "price": 943.9,
+    "market_cap": 162320000000,
+    "change_pct": -6.07
+  },
+  "CAPLIPOINT": {
+    "name": "Caplin Point Laboratories Limited",
+    "price": 2096.5,
+    "market_cap": 160380000000,
+    "change_pct": 3.12
+  },
+  "DCMSHRIRAM": {
+    "name": "DCM Shriram Limited",
+    "price": 985.2,
+    "market_cap": 159390000000,
+    "change_pct": -4.15
+  },
+  "TRAVELFOOD": {
+    "name": "Travel Food Services Limited",
+    "price": 1206.3,
+    "market_cap": 158840000000,
+    "change_pct": -6.04
+  },
+  "ABDL": {
+    "name": "Allied Blenders and Distillers Limited",
+    "price": 565.3,
+    "market_cap": 158780000000,
+    "change_pct": -2.65
+  },
+  "ZENTEC": {
+    "name": "Zen Technologies Limited",
+    "price": 1750.0,
+    "market_cap": 158210000000,
+    "change_pct": -3.6
+  },
+  "IGIL": {
+    "name": "International Gemological Institute Limited",
+    "price": 363.1,
+    "market_cap": 157870000000,
+    "change_pct": -1.44
+  },
+  "BRIGADE": {
+    "name": "Brigade Enterprises Limited",
+    "price": 641.0,
+    "market_cap": 157340000000,
+    "change_pct": -1.6
+  },
+  "AARTIIND": {
+    "name": "Aarti Industries Limited",
+    "price": 430.6,
+    "market_cap": 156890000000,
+    "change_pct": -5.99
+  },
+  "CCL": {
+    "name": "CCL Products (India) Limited",
+    "price": 1182.0,
+    "market_cap": 156270000000,
+    "change_pct": 9.54
+  },
+  "FINCABLES": {
+    "name": "Finolex Cables Limited",
+    "price": 1010.3,
+    "market_cap": 155940000000,
+    "change_pct": -4.46
+  },
+  "NATCOPHARM": {
+    "name": "NATCO Pharma Limited",
+    "price": 870.0,
+    "market_cap": 155520000000,
+    "change_pct": -2.62
+  },
+  "JBMA": {
+    "name": "JBM Auto Limited",
+    "price": 649.75,
+    "market_cap": 154570000000,
+    "change_pct": -4.41
+  },
+  "APOLLO": {
+    "name": "Apollo Micro Systems Limited",
+    "price": 406.75,
+    "market_cap": 153040000000,
+    "change_pct": -3.47
+  },
+  "GSPL": {
+    "name": "Gujarat State Petronet Limited",
+    "price": 268.35,
+    "market_cap": 151410000000,
+    "change_pct": -7.13
+  },
+  "INOXINDIA": {
+    "name": "INOX India Limited",
+    "price": 1650.0,
+    "market_cap": 151130000000,
+    "change_pct": 4.51
+  },
+  "USHAMART": {
+    "name": "Usha Martin Limited",
+    "price": 493.0,
+    "market_cap": 151040000000,
+    "change_pct": -3.92
+  },
+  "ARE_M": {
+    "name": "Amara Raja Energy & Mobility Limited",
+    "price": 824.65,
+    "market_cap": 150900000000,
+    "change_pct": -3.01
+  },
+  "AETHER": {
+    "name": "Aether Industries Limited",
+    "price": 1127.7,
+    "market_cap": 150790000000,
+    "change_pct": -0.92
+  },
+  "JUBLPHARMA": {
+    "name": "Jubilant Pharmova Limited",
+    "price": 945.95,
+    "market_cap": 150790000000,
+    "change_pct": -2.84
+  },
+  "NIVABUPA": {
+    "name": "Niva Bupa Health Insurance Company Limited",
+    "price": 81.5,
+    "market_cap": 150630000000,
+    "change_pct": -1.12
+  },
+  "JINDALSAW": {
+    "name": "Jindal Saw Limited",
+    "price": 234.95,
+    "market_cap": 150450000000,
+    "change_pct": -6.23
+  },
+  "ATLANTAELE": {
+    "name": "Atlanta Electricals Limited",
+    "price": 1954.6,
+    "market_cap": 150300000000,
+    "change_pct": -4.37
+  },
+  "GALLANTT": {
+    "name": "Gallantt Ispat Limited",
+    "price": 619.05,
+    "market_cap": 149850000000,
+    "change_pct": -4.6
+  },
+  "MINDACORP": {
+    "name": "Minda Corporation Limited",
+    "price": 630.0,
+    "market_cap": 149100000000,
+    "change_pct": -2.08
+  },
+  "ANURAS": {
+    "name": "Anupam Rasayan India Ltd",
+    "price": 1296.8,
+    "market_cap": 148230000000,
+    "change_pct": -2.36
+  },
+  "APLLTD": {
+    "name": "Alembic Pharmaceuticals Limited",
+    "price": 746.15,
+    "market_cap": 146540000000,
+    "change_pct": 1.05
+  },
+  "VENTIVE": {
+    "name": "Ventive Hospitality Limited",
+    "price": 624.65,
+    "market_cap": 146480000000,
+    "change_pct": -2.54
+  },
+  "INOXWIND": {
+    "name": "Inox Wind Limited",
+    "price": 84.1,
+    "market_cap": 146050000000,
+    "change_pct": -3.1
+  },
+  "AVANTIFEED": {
+    "name": "Avanti Feeds Limited",
+    "price": 1068.9,
+    "market_cap": 145760000000,
+    "change_pct": -3.75
+  },
+  "BEML": {
+    "name": "BEML Limited",
+    "price": 1735.9,
+    "market_cap": 145290000000,
+    "change_pct": -0.4
+  },
+  "SHRIPISTON": {
+    "name": "SPR Auto Technologies Limited",
+    "price": 3295.0,
+    "market_cap": 145030000000,
+    "change_pct": -3.26
+  },
+  "CHOICEIN": {
+    "name": "Choice International Limited",
+    "price": 646.55,
+    "market_cap": 144470000000,
+    "change_pct": -2.58
+  },
+  "KFINTECH": {
+    "name": "KFin Technologies Limited",
+    "price": 833.0,
+    "market_cap": 144470000000,
+    "change_pct": -4.13
+  },
+  "BASF": {
+    "name": "BASF India Limited",
+    "price": 3322.5,
+    "market_cap": 144340000000,
+    "change_pct": -2.79
+  },
+  "JSWDULUX": {
+    "name": "JSW Dulux Limited",
+    "price": 3165.0,
+    "market_cap": 144140000000,
+    "change_pct": 1.74
+  },
+  "FINEORG": {
+    "name": "Fine Organic Industries Limited",
+    "price": 4666.0,
+    "market_cap": 143880000000,
+    "change_pct": -1.86
+  },
+  "AGARWALEYE": {
+    "name": "Dr. Agarwal's Health Care Limited",
+    "price": 451.5,
+    "market_cap": 143140000000,
+    "change_pct": -1.84
+  },
+  "CLEANMAX": {
+    "name": "Clean Max Enviro Energy Solutions Limited",
+    "price": 1217.0,
+    "market_cap": 143090000000,
+    "change_pct": 3.96
+  },
+  "NSLNISP": {
+    "name": "NMDC Steel Limited",
+    "price": 48.2,
+    "market_cap": 141580000000,
+    "change_pct": -3.52
+  },
+  "SHAILY": {
+    "name": "Shaily Engineering Plastics Limited",
+    "price": 3074.0,
+    "market_cap": 141240000000,
+    "change_pct": 0.36
+  },
+  "GABRIEL": {
+    "name": "Gabriel India Limited",
+    "price": 979.0,
+    "market_cap": 140880000000,
+    "change_pct": -2.16
+  },
+  "AZAD": {
+    "name": "Azad Engineering Limited",
+    "price": 2157.0,
+    "market_cap": 140520000000,
+    "change_pct": -2.3
+  },
+  "POLYMED": {
+    "name": "Poly Medicure Limited",
+    "price": 1384.4,
+    "market_cap": 140320000000,
+    "change_pct": -2.49
+  },
+  "KSB": {
+    "name": "KSB Limited",
+    "price": 800.0,
+    "market_cap": 140130000000,
+    "change_pct": -1.73
+  },
+  "MAHSCOOTER": {
+    "name": "Maharashtra Scooters Ltd.",
+    "price": 12100.0,
+    "market_cap": 139050000000,
+    "change_pct": -2.97
+  },
+  "JYOTICNC": {
+    "name": "Jyoti CNC Automation Limited",
+    "price": 610.05,
+    "market_cap": 138720000000,
+    "change_pct": -3.82
+  },
+  "SOBHA": {
+    "name": "Sobha Limited",
+    "price": 1284.9,
+    "market_cap": 138260000000,
+    "change_pct": -4.3
+  },
+  "ASTRAMICRO": {
+    "name": "Astra Microwave Products Limited",
+    "price": 1409.0,
+    "market_cap": 137130000000,
+    "change_pct": -0.74
+  },
+  "WELSPUNLIV": {
+    "name": "Welspun Living Limited",
+    "price": 141.99,
+    "market_cap": 136680000000,
+    "change_pct": -0.8
+  },
+  "THELEELA": {
+    "name": "Leela Palaces Hotels & Resorts Limited",
+    "price": 408.0,
+    "market_cap": 136660000000,
+    "change_pct": -2.71
+  },
+  "SCI": {
+    "name": "The Shipping Corporation of India Limited",
+    "price": 293.3,
+    "market_cap": 136530000000,
+    "change_pct": -3.09
+  },
+  "RAINBOW": {
+    "name": "Rainbow Children's Medicare Limited",
+    "price": 1332.3,
+    "market_cap": 136410000000,
+    "change_pct": -0.82
+  },
+  "JSWHL": {
+    "name": "JSW Holdings Limited",
+    "price": 12275.0,
+    "market_cap": 136310000000,
+    "change_pct": -1.85
+  },
+  "DEVYANI": {
+    "name": "Devyani International Limited",
+    "price": 109.15,
+    "market_cap": 136240000000,
+    "change_pct": -3.52
+  },
+  "ABREL": {
+    "name": "Aditya Birla Real Estate Limited",
+    "price": 1212.0,
+    "market_cap": 135990000000,
+    "change_pct": -2.08
+  },
+  "GRWRHITECH": {
+    "name": "Garware Hi-Tech Films Limited",
+    "price": 5849.0,
+    "market_cap": 135810000000,
+    "change_pct": -0.75
+  },
+  "HONASA": {
+    "name": "Honasa Consumer Limited",
+    "price": 411.95,
+    "market_cap": 135000000000,
+    "change_pct": -1.0
+  },
+  "KIRLOSBROS": {
+    "name": "Kirloskar Brothers Limited",
+    "price": 1700.0,
+    "market_cap": 134910000000,
+    "change_pct": -0.65
+  },
+  "VIJAYA": {
+    "name": "Vijaya Diagnostic Centre Limited",
+    "price": 1305.9,
+    "market_cap": 134550000000,
+    "change_pct": -4.85
+  },
+  "ENGINERSIN": {
+    "name": "Engineers India Limited",
+    "price": 237.5,
+    "market_cap": 134539999999,
+    "change_pct": -0.12
+  },
+  "PGEL": {
+    "name": "PG Electroplast Limited",
+    "price": 467.65,
+    "market_cap": 134430000000,
+    "change_pct": -3.65
+  },
+  "VINATIORGA": {
+    "name": "Vinati Organics Limited",
+    "price": 1285.0,
+    "market_cap": 133460000000,
+    "change_pct": -1.46
+  },
+  "TEGA": {
+    "name": "Tega Industries Limited",
+    "price": 1765.0,
+    "market_cap": 133139999999,
+    "change_pct": -4.48
+  },
+  "CANHLIFE": {
+    "name": "Canara HSBC Life Insurance Company Limited",
+    "price": 140.04,
+    "market_cap": 133039999999,
+    "change_pct": 1.84
+  },
+  "GRAPHITE": {
+    "name": "Graphite India Limited",
+    "price": 670.0,
+    "market_cap": 131150000000,
+    "change_pct": -5.01
+  },
+  "VGUARD": {
+    "name": "V-Guard Industries Limited",
+    "price": 300.5,
+    "market_cap": 131100000000,
+    "change_pct": -3.21
+  },
+  "LTFOODS": {
+    "name": "LT Foods Limited",
+    "price": 372.15,
+    "market_cap": 129470000000,
+    "change_pct": -3.3
+  },
+  "ARVIND": {
+    "name": "Arvind Limited",
+    "price": 493.9,
+    "market_cap": 128970000000,
+    "change_pct": 0.04
+  },
+  "PARADEEP": {
+    "name": "Paradeep Phosphates Limited",
+    "price": 123.1,
+    "market_cap": 128729999999,
+    "change_pct": -3.51
+  },
+  "KEC": {
+    "name": "KEC International Limited",
+    "price": 482.1,
+    "market_cap": 128570000000,
+    "change_pct": -3.02
+  },
+  "ECLERX": {
+    "name": "eClerx Services Limited",
+    "price": 1378.9,
+    "market_cap": 128259999999,
+    "change_pct": -0.09
+  },
+  "APTUS": {
+    "name": "Aptus Value Housing Finance India Limited",
+    "price": 255.6,
+    "market_cap": 128190000000,
+    "change_pct": -3.66
+  },
+  "EIDPARRY": {
+    "name": "E.I.D.- Parry (India) Limited",
+    "price": 721.9,
+    "market_cap": 128110000000,
+    "change_pct": -1.81
+  },
+  "HAPPYFORGE": {
+    "name": "Happy Forgings Limited",
+    "price": 1330.1,
+    "market_cap": 127490000000,
+    "change_pct": -4.17
+  },
+  "JPPOWER": {
+    "name": "Jaiprakash Power Ventures Limited",
+    "price": 18.44,
+    "market_cap": 126860000000,
+    "change_pct": -3.1
+  },
+  "DOMS": {
+    "name": "DOMS Industries Limited",
+    "price": 2090.0,
+    "market_cap": 126610000000,
+    "change_pct": -0.15
+  },
+  "TBOTEK": {
+    "name": "TBO Tek Limited",
+    "price": 1188.9,
+    "market_cap": 126400000000,
+    "change_pct": -2.96
+  },
+  "PRIVISCL": {
+    "name": "Privi Speciality Chemicals Limited",
+    "price": 3230.0,
+    "market_cap": 126390000000,
+    "change_pct": -0.02
+  },
+  "SPLPETRO": {
+    "name": "Supreme Petrochem Limited",
+    "price": 665.5,
+    "market_cap": 125830000000,
+    "change_pct": -4.65
+  },
+  "CEATLTD": {
+    "name": "CEAT Limited",
+    "price": 3103.0,
+    "market_cap": 125710000000,
+    "change_pct": -2.77
+  },
+  "IRCON": {
+    "name": "Ircon International Limited",
+    "price": 133.0,
+    "market_cap": 125610000000,
+    "change_pct": -2.61
+  },
+  "AEQUS": {
+    "name": "Aequs Limited",
+    "price": 186.95,
+    "market_cap": 125420000000,
+    "change_pct": 3.86
+  },
+  "CONCORDBIO": {
+    "name": "Concord Biotech Limited",
+    "price": 1193.9,
+    "market_cap": 125190000000,
+    "change_pct": -1.32
+  },
+  "FIVESTAR": {
+    "name": "Five-Star Business Finance Limited",
+    "price": 422.8,
+    "market_cap": 124300000000,
+    "change_pct": -3.18
+  },
+  "INGERRAND": {
+    "name": "Ingersoll-Rand (India) Limited",
+    "price": 3925.0,
+    "market_cap": 123540000000,
+    "change_pct": -0.9
+  },
+  "ALIVUS": {
+    "name": "Alivus Life Sciences Limited",
+    "price": 999.0,
+    "market_cap": 122980000000,
+    "change_pct": -3.24
+  }
+}

@@ -1,0 +1,12 @@
+- **WIPRO | Current Price: 181.76 | 7-Day Trend: Downtrend**
+- **Signal:** Avoid
+- **Confidence:** 85%
+- **Technical Reasoning:**
+  - Historical Performance: Over the past week, Wipro has shown bearish momentum, with a significant decline from 209.84 to 181.76, indicating strong selling pressure.
+  - Volume Trends: Trading volume has been rising, indicating increasing participation in the downtrend.
+  - Moving Averages: The stock is trading below its short-term moving average, suggesting a downtrend.
+  - Patterns: The stock has broken below key support levels, confirming the bearish trend.
+- **Investment Signal:**
+  - Bullish Case: If the stock reclaims the 198.37 level, it could signal a potential reversal toward 204.32.
+  - Bearish Risk: A break below 181.0 could signal further downside to 175.0.
+- **Risk Disclaimer:** Markets are volatile. Apply strict risk management.

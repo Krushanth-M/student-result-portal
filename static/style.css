@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root {
+  --color-onyx: #040507;
+  --color-amber: #ff9e00;
+  --color-amber-dim: rgba(255, 158, 0, 0.1);
+  --color-amber-glow: rgba(255, 158, 0, 0.25);
+  --color-glass-zinc: rgba(9, 9, 11, 0.4);
+  --color-glass-black: rgba(0, 0, 0, 0.5);
+  
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base resets and scrollbar hiding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+body {
+  background-color: var(--color-onyx);
+  color: #f4f4f5;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Cinematic static noise overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Ambient drift glowing orbs */
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 0;
+}
+
+.orb-amber-1 {
+  background: radial-gradient(circle, rgba(255, 158, 0, 0.06) 0%, rgba(255, 158, 0, 0) 70%);
+  width: 50vw;
+  height: 50vw;
+  top: -10vw;
+  left: -10vw;
+  animation: floatOrb 28s ease-in-out infinite alternate;
+}
+
+.orb-amber-2 {
+  background: radial-gradient(circle, rgba(255, 158, 0, 0.04) 0%, rgba(255, 158, 0, 0) 70%);
+  width: 60vw;
+  height: 60vw;
+  bottom: -15vw;
+  right: -10vw;
+  animation: floatOrb 35s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5vw, 5vw) scale(1.1); }
+  100% { transform: translate(-3vw, 8vw) scale(0.95); }
+}
+
+/* Monochromatic glass widgets */
+.glass-panel {
+  background: linear-gradient(135deg, var(--color-glass-zinc) 0%, var(--color-glass-black) 100%);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid var(--color-amber-dim);
+  border-radius: 12px;
+  transition: border-color 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium);
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 158, 0, 0.2);
+}
+
+/* Command palette styling */
+.command-palette {
+  background: rgba(4, 5, 7, 0.85);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid var(--color-amber-dim);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.7);
+  transition: width 0.5s var(--ease-premium), height 0.5s var(--ease-premium), border-color 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium);
+}
+
+.command-palette:focus-within {
+  border-color: var(--color-amber);
+  box-shadow: 0 0 25px var(--color-amber-glow);
+}
+
+/* Asymmetrical borders and luxury styling accents */
+.asym-border-l {
+  border-left: 2px solid var(--color-amber);
+}
+
+.glow-text-amber {
+  text-shadow: 0 0 8px rgba(255, 158, 0, 0.4);
+}
+
+.pulse-amber {
+  animation: pulseGlow 2.5s infinite var(--ease-premium);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.35; box-shadow: 0 0 10px rgba(255, 158, 0, 0.1); }
+  50% { opacity: 1; box-shadow: 0 0 20px rgba(255, 158, 0, 0.3); }
+}
+
+/* Radial tracking confidence gauge */
+.radial-ring {
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 0.8s var(--ease-premium);
+}
+
+/* Self-healing unified diff classes */
+.diff-del {
+  background-color: rgba(194, 65, 12, 0.12);
+  border-left: 2px solid #c2410c;
+  color: #f87171;
+}
+
+.diff-ins {
+  background-color: rgba(132, 204, 22, 0.12);
+  border-left: 2px solid #84cc16;
+  color: #a3e635;
+}
+
+.code-editor-line {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.code-line-error-amber {
+  background-color: rgba(255, 158, 0, 0.08);
+  border-left: 3px solid var(--color-amber);
+  animation: errorPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes errorPulse {
+  0%, 100% { background-color: rgba(255, 158, 0, 0.06); }
+  50% { background-color: rgba(255, 158, 0, 0.15); }
+}

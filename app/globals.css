@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;      /* #f8fafc */
+    --foreground: 224 71.4% 4.1%;   /* #0f172a */
+    --card: 0 0% 100%;              /* #ffffff */
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 238.9 77.2% 62.4%;    /* indigo-600 */
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;   /* #f1f5f9 */
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 238.9 77.2% 62.4%;     /* indigo-600 */
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;          /* #e2e8f0 */
+    --input: 220 13% 91%;
+    --ring: 238.9 77.2% 62.4%;
+    --radius: 0rem;                 /* Sharp corners */
+    --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+/* Force sharp corners everywhere */
+*, *::before, *::after {
+  border-radius: 0px !important;
+}
+
+/* Smooth Light Theme Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  display: block !important;
+}
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-color: #f8fafc;
+  color: #1e293b;
+  font-family: 'Outfit', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Glassmorphism/Flat sharp panels */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(203, 213, 225, 1);
+  box-shadow: 0 2px 8px 0 rgba(148, 163, 184, 0.05);
+}
+
+.glass-panel-hover {
+  transition: all 0.25s var(--ease-premium);
+}
+.glass-panel-hover:hover {
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Grid overlay */
+.grid-bg {
+  background-size: 30px 30px;
+  background-image: linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+}
+
+/* Print layout for PDF generation */
+.print-only {
+  display: none !important;
+}
+
+@media print {
+  /* Hide interactive web components */
+  header, footer, button, .no-print, input, select, .action-buttons, .back-link {
+    display: none !important;
+  }
+
+  /* Reset print document defaults */
+  html, body {
+    background-color: #ffffff !important;
+    background-image: none !important;
+    color: #000000 !important;
+    font-family: 'Outfit', 'Segoe UI', Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.4;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* Show print-only details */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Target report box */
+  .print-container {
+    border: 3px double #334155 !important;
+    padding: 30px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+  }
+
+  /* Dark text overrides */
+  h1, h2, h3, h4, span, p, td, th {
+    color: #000000 !important;
+  }
+
+  /* Clean tables */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+
+  th, td {
+    border: 1px solid #94a3b8 !important;
+    padding: 8px 12px !important;
+    color: #000000 !important;
+  }
+
+  th {
+    background-color: #f1f5f9 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Keep linear progress bars in print */
+  .print-progress {
+    background-color: #e2e8f0 !important;
+    border: 1px solid #cbd5e1 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-progress-bar {
+    background-color: #312e81 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

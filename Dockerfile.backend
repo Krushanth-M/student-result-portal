@@ -1,0 +1,22 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application files
+COPY app.py model.py nse_stocks.json nse_stocks_detailed.json ./
+
+# Create sandbox directories
+RUN mkdir -p sandbox outputs
+
+# Copy the sandbox Dockerfile inside so the backend can build it if Docker is available
+COPY Dockerfile ./Dockerfile
+
+# Expose FastAPI port
+EXPOSE 8000
+
+# Start FastAPI
+CMD ["python", "-m", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]

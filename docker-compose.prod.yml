@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENROUTER_API_KEY=YOUR_OPENROUTER_API_KEY
+      - FINNHUB_API_KEY=YOUR_FINNHUB_API_KEY
+      - DEMO_MODE=False
+    restart: always
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+      args:
+        - BACKEND_API_URL=http://backend:8000
+    ports:
+      - "3000:3000"
+    environment:
+      - BACKEND_API_URL=http://backend:8000
+    depends_on:
+      - backend
+    restart: always
