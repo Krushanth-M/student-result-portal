@@ -321,7 +321,7 @@ export const api = {
           .upsert({
             student_id: studentId,
             subject_scores: subjectScores
-          });
+          }, { onConflict: "student_id" });
           
         if (resultsErr) throw new Error(resultsErr.message);
         
