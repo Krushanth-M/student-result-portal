@@ -52,8 +52,8 @@ export interface ClassInsights {
 }
 
 // 2. Initialize Supabase
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || "";
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://czavqapcmoeghxpygzfn.supabase.co";
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN6YXZxYXBjbW9lZ2h4cHlnemZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExODU4MzAsImV4cCI6MjA5Njc2MTgzMH0.TobwXc_bMwZ24KwV_vhmEprhVM70wvooMZssgSHV1p4";
 
 export const isSupabaseConfigured = !!(supabaseUrl && supabaseAnonKey);
 
