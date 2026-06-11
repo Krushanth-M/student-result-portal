@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Plus, Search, Trash2, Edit3, X, ChevronDown, ArrowUpDown, RefreshCw, ArrowLeft
+  Plus, Search, Trash2, Edit3, X, ChevronDown, ArrowUpDown, RefreshCw, ArrowLeft, Shield
 } from "lucide-react";
 import { z } from "zod";
 import { api, StudentWithResults, ClassInsights, calculateClassInsights } from "@/lib/student_db";
@@ -28,6 +28,26 @@ const studentFormSchema = z.object({
 type StudentFormData = z.infer<typeof studentFormSchema>;
 
 export default function AdminView() {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    if (typeof window !== "undefined") {
+      return sessionStorage.getItem("admin_auth") === "true";
+    }
+    return false;
+  });
+  const [passInput, setPassInput] = useState("");
+  const [passError, setPassError] = useState("");
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passInput === "5364105") {
+      sessionStorage.setItem("admin_auth", "true");
+      setIsAuthenticated(true);
+      setPassError("");
+    } else {
+      setPassError("ACCESS KEY INVALID");
+    }
+  };
+
   const [records, setRecords] = useState<StudentWithResults[]>([]);
   const [insights, setInsights] = useState<ClassInsights | null>(null);
   const [loading, setLoading] = useState(true);
@@ -214,6 +234,56 @@ export default function AdminView() {
       [key]: val
     }));
   };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center bg-[#f8fafc] px-4">
+        <div className="w-full max-w-sm border border-slate-350 bg-white p-8 shadow-xs">
+          <div className="text-center mb-8 flex flex-col items-center gap-3">
+            <div className="h-10 w-10 bg-slate-50 text-slate-800 flex items-center justify-center border border-slate-200">
+              <Shield className="h-5 w-5 text-slate-900" />
+            </div>
+            <span className="text-xs font-black uppercase tracking-widest text-slate-950">
+              FACULTY CONSOLE ACCESS
+            </span>
+          </div>
+
+          <form onSubmit={handlePasswordSubmit} className="space-y-6">
+            <div className="space-y-2">
+              <input
+                type="password"
+                placeholder="ENTER SECURITY KEY"
+                value={passInput}
+                onChange={(e) => setPassInput(e.target.value)}
+                className="w-full bg-white border border-slate-300 focus:border-slate-850 rounded-none px-4 py-3 text-xs font-mono text-center text-slate-800 outline-none uppercase"
+                autoFocus
+              />
+              {passError && (
+                <p className="text-[10px] font-bold text-rose-600 font-mono tracking-wider text-center uppercase">
+                  {passError}
+                </p>
+              )}
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <button
+                type="submit"
+                className="w-full bg-slate-900 hover:bg-slate-950 text-white font-black py-3 text-xs uppercase tracking-widest transition-colors cursor-pointer"
+              >
+                PROCEED
+              </button>
+              <Link
+                href="/"
+                className="w-full border border-slate-200 hover:border-slate-900 bg-white text-slate-600 hover:text-slate-900 font-black py-3 text-xs uppercase tracking-widest transition-colors text-center block cursor-pointer"
+              >
+                BACK
+              </Link>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full min-h-screen relative z-10 bg-[#f8fafc] pb-16 uppercase text-xs">
