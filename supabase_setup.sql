@@ -30,6 +30,27 @@ CREATE TABLE IF NOT EXISTS public.results (
 ALTER TABLE public.students DISABLE ROW LEVEL SECURITY;
 ALTER TABLE public.results DISABLE ROW LEVEL SECURITY;
 
+-- 3b. Just in case RLS is enabled, create permissive policies to allow anonymous read/write/update/delete
+DROP POLICY IF EXISTS "Allow public read" ON public.students;
+DROP POLICY IF EXISTS "Allow public insert" ON public.students;
+DROP POLICY IF EXISTS "Allow public update" ON public.students;
+DROP POLICY IF EXISTS "Allow public delete" ON public.students;
+
+CREATE POLICY "Allow public read" ON public.students FOR SELECT USING (true);
+CREATE POLICY "Allow public insert" ON public.students FOR INSERT WITH CHECK (true);
+CREATE POLICY "Allow public update" ON public.students FOR UPDATE USING (true) WITH CHECK (true);
+CREATE POLICY "Allow public delete" ON public.students FOR DELETE USING (true);
+
+DROP POLICY IF EXISTS "Allow public read" ON public.results;
+DROP POLICY IF EXISTS "Allow public insert" ON public.results;
+DROP POLICY IF EXISTS "Allow public update" ON public.results;
+DROP POLICY IF EXISTS "Allow public delete" ON public.results;
+
+CREATE POLICY "Allow public read" ON public.results FOR SELECT USING (true);
+CREATE POLICY "Allow public insert" ON public.results FOR INSERT WITH CHECK (true);
+CREATE POLICY "Allow public update" ON public.results FOR UPDATE USING (true) WITH CHECK (true);
+CREATE POLICY "Allow public delete" ON public.results FOR DELETE USING (true);
+
 -- 4. Seed Initial Student Records from your console
 INSERT INTO public.students (id, name, usn_number, college)
 VALUES 
