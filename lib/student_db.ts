@@ -1,8 +1,8 @@
 /**
  * Student Result Portal - API & Fallback Mock Database Engine (USN-Based)
  * ---------------------------------------------------------------------
- * Handles database operations for students (demographics) and their results (5 courses:
- * Math, Python, AI, Chemistry, ECE). Integrates Supabase and local storage fallbacks.
+ * Handles database operations for students (demographics) and their results.
+ * Integrates Supabase and local storage fallbacks. Supports customizable subjects.
  */
 
 import { createClient } from "@supabase/supabase-js";
@@ -12,26 +12,28 @@ export interface Student {
   id: string;
   user_id?: string;
   name: string;
-  usn_number: string; // University Seat Number (e.g. 1RV26CS001)
+  usn_number: string; // University Seat Number
   college: string;     // College Name
+  year: number;        // Year (1, 2, 3, 4)
+  semester: number;    // Semester (1, 2)
   created_at?: string;
 }
 
 export interface Results {
   id: string;
   student_id: string;
-  math_score: number;
-  python_score: number;
-  ai_score: number;
-  chemistry_score: number;
-  ece_score: number;
-  total?: number;
-  gpa?: number;
+  subject_scores: Record<string, number>; // Dynamic scores mapping of subject_id -> score
   created_at?: string;
 }
 
 export interface StudentWithResults extends Student {
   results: Results | null;
+}
+
+export interface SubjectConfig {
+  id: string;
+  code: string;
+  name: string;
 }
 
 export interface ClassInsights {
@@ -44,11 +46,7 @@ export interface ClassInsights {
   lowest_pct: number;
   lowest_name: string;
   lowest_roll: string;
-  avg_math: number;
-  avg_python: number;
-  avg_ai: number;
-  avg_chem: number;
-  avg_ece: number;
+  avg_subjects: Record<string, number>; // Dynamic average per subject_id
 }
 
 // 2. Initialize Supabase
@@ -65,41 +63,49 @@ export const supabase = (() => {
   }
 })();
 
-// 3. Dummy Seed Data (Maths, Python, AI, Chemistry, ECE)
+// 3. Default subjects config
+export const DEFAULT_SUBJECTS: SubjectConfig[] = [
+  { id: "sub_1", code: "10MAT21", name: "MATHEMATICS" },
+  { id: "sub_2", code: "10CS22", name: "PYTHON PROGRAMMING" },
+  { id: "sub_3", code: "10AI23", name: "INTRODUCTION TO AI" },
+  { id: "sub_4", code: "10CH24", name: "ENGINEERING CHEMISTRY" },
+  { id: "sub_5", code: "10EC25", name: "ELECTRONICS & COMMUNICATION" },
+  { id: "sub_6", code: "10COM26", name: "COMMUNICATION SKILLS" },
+  { id: "sub_7", code: "10CON27", name: "INDIAN CONSTITUTION" }
+];
+
+// 4. Dummy Seed Data
 const DUMMY_STUDENTS: Student[] = [
-  { id: "s1", name: "Hermione Granger", usn_number: "1RV26CS001", college: "RV College of Engineering" },
-  { id: "s2", name: "Harry Potter", usn_number: "1RV26CS002", college: "RV College of Engineering" },
-  { id: "s3", name: "Ron Weasley", usn_number: "1RV26CS003", college: "RV College of Engineering" },
-  { id: "s4", name: "Emma Watson", usn_number: "1BM26EC042", college: "BMS College of Engineering" },
-  { id: "s5", name: "Daniel Radcliffe", usn_number: "1PE26AI014", college: "PES University" }
+  { id: "s1", name: "BHARATH N", usn_number: "1RM25CS008", college: "Rathinam Institute of Technology", year: 2, semester: 1 },
+  { id: "s2", name: "KRUSHANTH M", usn_number: "1RM25CS023", college: "Rathinam Institute of Technology", year: 3, semester: 2 }
 ];
 
 const DUMMY_RESULTS: Results[] = [
-  { id: "r1", student_id: "s1", math_score: 98, python_score: 100, ai_score: 99, chemistry_score: 95, ece_score: 96, total: 488, gpa: 9.76 },
-  { id: "r2", student_id: "s2", math_score: 72, python_score: 85, ai_score: 80, chemistry_score: 68, ece_score: 75, total: 380, gpa: 7.60 },
-  { id: "r3", student_id: "s3", math_score: 35, python_score: 42, ai_score: 55, chemistry_score: 38, ece_score: 50, total: 220, gpa: 4.40 }, // Backlog (2: Math, Chem)
-  { id: "r4", student_id: "s4", math_score: 85, python_score: 92, ai_score: 88, chemistry_score: 78, ece_score: 90, total: 433, gpa: 8.66 },
-  { id: "r5", student_id: "s5", math_score: 90, python_score: 88, ai_score: 92, chemistry_score: 84, ece_score: 86, total: 440, gpa: 8.80 }
+  { id: "r1", student_id: "s1", subject_scores: { "sub_1": 61, "sub_2": 44, "sub_3": 41, "sub_4": 62, "sub_5": 56, "sub_6": 70, "sub_7": 65 } },
+  { id: "r2", student_id: "s2", subject_scores: { "sub_1": 99, "sub_2": 99, "sub_3": 99, "sub_4": 99, "sub_5": 98, "sub_6": 99, "sub_7": 97 } }
 ];
 
 const delay = (ms = 400) => new Promise(resolve => setTimeout(resolve, ms));
 
-const getLocalData = (): { students: Student[]; results: Results[] } => {
+const getLocalData = (): { students: Student[]; results: Results[]; subjects: SubjectConfig[] } => {
   if (typeof window === "undefined") {
-    return { students: DUMMY_STUDENTS, results: DUMMY_RESULTS };
+    return { students: DUMMY_STUDENTS, results: DUMMY_RESULTS, subjects: DEFAULT_SUBJECTS };
   }
   const studentsRaw = localStorage.getItem("sp2_students");
   const resultsRaw = localStorage.getItem("sp2_results");
+  const subjectsRaw = localStorage.getItem("sp2_subjects");
   
-  if (!studentsRaw || !resultsRaw) {
+  if (!studentsRaw || !resultsRaw || !subjectsRaw) {
     localStorage.setItem("sp2_students", JSON.stringify(DUMMY_STUDENTS));
     localStorage.setItem("sp2_results", JSON.stringify(DUMMY_RESULTS));
-    return { students: DUMMY_STUDENTS, results: DUMMY_RESULTS };
+    localStorage.setItem("sp2_subjects", JSON.stringify(DEFAULT_SUBJECTS));
+    return { students: DUMMY_STUDENTS, results: DUMMY_RESULTS, subjects: DEFAULT_SUBJECTS };
   }
   
   return {
     students: JSON.parse(studentsRaw),
-    results: JSON.parse(resultsRaw)
+    results: JSON.parse(resultsRaw),
+    subjects: JSON.parse(subjectsRaw)
   };
 };
 
@@ -109,8 +115,59 @@ const saveLocalData = (students: Student[], results: Results[]) => {
   localStorage.setItem("sp2_results", JSON.stringify(results));
 };
 
-// 4. API Endpoints
+// 5. API Endpoints
 export const api = {
+  /**
+   * Fetch all subjects configuration
+   */
+  async getSubjects(): Promise<SubjectConfig[]> {
+    await delay(300);
+    if (isSupabaseConfigured && supabase) {
+      try {
+        const { data, error } = await supabase
+          .from("portal_settings")
+          .select("value")
+          .eq("key", "subjects")
+          .maybeSingle();
+        if (error) throw error;
+        if (data && Array.isArray(data.value)) {
+          return data.value as SubjectConfig[];
+        }
+      } catch (err) {
+        console.error("Error loading subjects settings from Supabase:", err);
+      }
+    } else {
+      const { subjects } = getLocalData();
+      return subjects;
+    }
+    return DEFAULT_SUBJECTS;
+  },
+
+  /**
+   * Save subjects configuration
+   */
+  async saveSubjects(subjects: SubjectConfig[]): Promise<boolean> {
+    await delay(300);
+    if (isSupabaseConfigured && supabase) {
+      try {
+        const { error } = await supabase
+          .from("portal_settings")
+          .upsert({ key: "subjects", value: subjects });
+        if (error) throw error;
+        return true;
+      } catch (err) {
+        console.error("Error saving subjects configuration:", err);
+        return false;
+      }
+    } else {
+      if (typeof window !== "undefined") {
+        localStorage.setItem("sp2_subjects", JSON.stringify(subjects));
+        return true;
+      }
+      return false;
+    }
+  },
+
   /**
    * Fetches all students with results (for Teacher/Admin ledger)
    */
@@ -121,23 +178,32 @@ export const api = {
       const { data, error } = await supabase
         .from("students")
         .select(`
-          id, user_id, name, usn_number, college,
+          id, user_id, name, usn_number, college, year, semester,
           results (
-            id, student_id, math_score, python_score, ai_score, chemistry_score, ece_score, total, gpa
+            id, student_id, subject_scores
           )
         `)
         .order("usn_number");
         
       if (error) throw new Error(error.message);
       
-      return (data || []).map((student: any) => ({
-        id: student.id,
-        user_id: student.user_id,
-        name: student.name,
-        usn_number: student.usn_number,
-        college: student.college,
-        results: Array.isArray(student.results) ? student.results[0] || null : student.results || null
-      }));
+      return (data || []).map((student: any) => {
+        const res = Array.isArray(student.results) ? student.results[0] : student.results;
+        return {
+          id: student.id,
+          user_id: student.user_id,
+          name: student.name,
+          usn_number: student.usn_number,
+          college: student.college,
+          year: student.year || 1,
+          semester: student.semester || 1,
+          results: res ? {
+            id: res.id,
+            student_id: res.student_id,
+            subject_scores: res.subject_scores || {}
+          } : null
+        };
+      });
     } else {
       const { students, results } = getLocalData();
       return students.map(student => {
@@ -161,9 +227,9 @@ export const api = {
       const { data, error } = await supabase
         .from("students")
         .select(`
-          id, user_id, name, usn_number, college,
+          id, user_id, name, usn_number, college, year, semester,
           results (
-            id, student_id, math_score, python_score, ai_score, chemistry_score, ece_score, total, gpa
+            id, student_id, subject_scores
           )
         `)
         .eq("usn_number", normalizedUsn)
@@ -172,13 +238,20 @@ export const api = {
       if (error) throw new Error(error.message);
       if (!data) return null;
       
+      const res = Array.isArray(data.results) ? data.results[0] : data.results;
       return {
         id: data.id,
         user_id: data.user_id,
         name: data.name,
         usn_number: data.usn_number,
         college: data.college,
-        results: Array.isArray(data.results) ? data.results[0] || null : data.results || null
+        year: data.year || 1,
+        semester: data.semester || 1,
+        results: res ? {
+          id: res.id,
+          student_id: res.student_id,
+          subject_scores: res.subject_scores || {}
+        } : null
       };
     } else {
       const { students, results } = getLocalData();
@@ -197,23 +270,20 @@ export const api = {
    * Save (Upsert) student details and core subject marks
    */
   async upsertStudent(
-    studentData: Omit<Student, "id"> & { id?: string },
-    resultsData: Omit<Results, "id" | "student_id" | "total" | "gpa">
+    studentData: Omit<Student, "id" | "college"> & { id?: string; college?: string },
+    subjectScores: Record<string, number>
   ): Promise<{ success: boolean; message: string }> {
     await delay(700);
     
-    const scores = [
-      resultsData.math_score, 
-      resultsData.python_score, 
-      resultsData.ai_score, 
-      resultsData.chemistry_score, 
-      resultsData.ece_score
-    ];
-    if (scores.some(s => s < 0 || s > 100)) {
-      return { success: false, message: "Validation error: Scores must be between 0 and 100." };
+    for (const key in subjectScores) {
+      const score = subjectScores[key];
+      if (score < 0 || score > 100) {
+        return { success: false, message: "Validation error: Scores must be between 0 and 100." };
+      }
     }
     
     const normalizedUsn = studentData.usn_number.trim().toUpperCase();
+    const collegeName = "Rathinam Institute of Technology";
     
     if (isSupabaseConfigured && supabase) {
       const studentId = studentData.id || crypto.randomUUID();
@@ -238,7 +308,9 @@ export const api = {
             id: studentId,
             name: studentData.name,
             usn_number: normalizedUsn,
-            college: studentData.college,
+            college: collegeName,
+            year: studentData.year || 1,
+            semester: studentData.semester || 1,
             user_id: studentData.user_id
           });
           
@@ -248,11 +320,7 @@ export const api = {
           .from("results")
           .upsert({
             student_id: studentId,
-            math_score: resultsData.math_score,
-            python_score: resultsData.python_score,
-            ai_score: resultsData.ai_score,
-            chemistry_score: resultsData.chemistry_score,
-            ece_score: resultsData.ece_score
+            subject_scores: subjectScores
           });
           
         if (resultsErr) throw new Error(resultsErr.message);
@@ -271,36 +339,35 @@ export const api = {
         return { success: false, message: `USN Number '${normalizedUsn}' already exists in database.` };
       }
       
-      const sum = scores.reduce((a, b) => a + b, 0);
-      const computedGpa = Number((sum / 50.0).toFixed(2));
-      
       let updatedStudents = [...students];
       let updatedResults = [...results];
       
       if (isEdit) {
-        updatedStudents = updatedStudents.map(s => s.id === studentId ? { ...s, ...studentData, usn_number: normalizedUsn, id: studentId } : s);
+        updatedStudents = updatedStudents.map(s => s.id === studentId ? { 
+          ...s, 
+          name: studentData.name, 
+          usn_number: normalizedUsn, 
+          college: collegeName, 
+          year: studentData.year || 1, 
+          semester: studentData.semester || 1 
+        } : s);
         updatedResults = updatedResults.map(r => r.student_id === studentId ? {
           ...r,
-          math_score: resultsData.math_score,
-          python_score: resultsData.python_score,
-          ai_score: resultsData.ai_score,
-          chemistry_score: resultsData.chemistry_score,
-          ece_score: resultsData.ece_score,
-          total: sum,
-          gpa: computedGpa
+          subject_scores: subjectScores
         } : r);
       } else {
-        updatedStudents.push({ ...studentData, usn_number: normalizedUsn, id: studentId });
+        updatedStudents.push({ 
+          id: studentId, 
+          name: studentData.name, 
+          usn_number: normalizedUsn, 
+          college: collegeName, 
+          year: studentData.year || 1, 
+          semester: studentData.semester || 1 
+        });
         updatedResults.push({
           id: `r-${Date.now()}`,
           student_id: studentId,
-          math_score: resultsData.math_score,
-          python_score: resultsData.python_score,
-          ai_score: resultsData.ai_score,
-          chemistry_score: resultsData.chemistry_score,
-          ece_score: resultsData.ece_score,
-          total: sum,
-          gpa: computedGpa
+          subject_scores: subjectScores
         });
       }
       
@@ -335,16 +402,22 @@ export const api = {
 };
 
 /**
- * Calculates dashboard Bento Grid analytics for MATHS, PYTHON, AI, CHEMISTRY, ECE
+ * Calculates dashboard Bento Grid analytics dynamically based on configured subjects
  */
-export function calculateClassInsights(records: StudentWithResults[]): ClassInsights {
+export function calculateClassInsights(records: StudentWithResults[], activeSubjects: SubjectConfig[]): ClassInsights {
   const total = records.length;
+  
+  const avg_subjects: Record<string, number> = {};
+  activeSubjects.forEach(s => {
+    avg_subjects[s.id] = 0;
+  });
+
   if (total === 0) {
     return {
       total: 0, pass_rate: 0, backlog_count: 0,
       highest_pct: 0, highest_name: "N/A", highest_roll: "N/A",
       lowest_pct: 0, lowest_name: "N/A", lowest_roll: "N/A",
-      avg_math: 0, avg_python: 0, avg_ai: 0, avg_chem: 0, avg_ece: 0
+      avg_subjects
     };
   }
   
@@ -357,18 +430,18 @@ export function calculateClassInsights(records: StudentWithResults[]): ClassInsi
   let lowestPct = 101;
   let lowestStudent = { name: "N/A", usn: "N/A" };
   
-  let sumMath = 0;
-  let sumPython = 0;
-  let sumAi = 0;
-  let sumChem = 0;
-  let sumEce = 0;
+  const subjectSums: Record<string, number> = {};
+  activeSubjects.forEach(s => {
+    subjectSums[s.id] = 0;
+  });
   
   records.forEach(student => {
     const res = student.results;
     if (!res) return;
     
-    const scores = [res.math_score, res.python_score, res.ai_score, res.chemistry_score, res.ece_score];
-    const pct = res.total ? res.total / 5 : 0;
+    const scores = activeSubjects.map(s => res.subject_scores[s.id] ?? 0);
+    const sum = scores.reduce((a, b) => a + b, 0);
+    const pct = activeSubjects.length > 0 ? sum / activeSubjects.length : 0;
     
     // Student backlog count (score < 40 is a backlog)
     const studentBacklogs = scores.filter(s => s < 40).length;
@@ -387,11 +460,13 @@ export function calculateClassInsights(records: StudentWithResults[]): ClassInsi
       lowestStudent = { name: student.name, usn: student.usn_number };
     }
     
-    sumMath += res.math_score;
-    sumPython += res.python_score;
-    sumAi += res.ai_score;
-    sumChem += res.chemistry_score;
-    sumEce += res.ece_score;
+    activeSubjects.forEach(s => {
+      subjectSums[s.id] += res.subject_scores[s.id] ?? 0;
+    });
+  });
+  
+  activeSubjects.forEach(s => {
+    avg_subjects[s.id] = Number((subjectSums[s.id] / total).toFixed(1));
   });
   
   return {
@@ -404,10 +479,6 @@ export function calculateClassInsights(records: StudentWithResults[]): ClassInsi
     lowest_pct: Number((lowestPct === 101 ? 0 : lowestPct).toFixed(2)),
     lowest_name: lowestStudent.name,
     lowest_roll: lowestStudent.usn,
-    avg_math: Number((sumMath / total).toFixed(1)),
-    avg_python: Number((sumPython / total).toFixed(1)),
-    avg_ai: Number((sumAi / total).toFixed(1)),
-    avg_chem: Number((sumChem / total).toFixed(1)),
-    avg_ece: Number((sumEce / total).toFixed(1))
+    avg_subjects
   };
 }

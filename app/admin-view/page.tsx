@@ -4,25 +4,23 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Plus, Search, Trash2, Edit3, X, ChevronDown, ArrowUpDown, RefreshCw, ArrowLeft, Shield
+  Plus, Search, Trash2, Edit3, X, ChevronDown, RefreshCw, ArrowLeft, Shield, Settings, AlertTriangle
 } from "lucide-react";
 import { z } from "zod";
-import { api, StudentWithResults, ClassInsights, calculateClassInsights } from "@/lib/student_db";
-
-const scoreSchema = z.coerce
-  .number({ invalid_type_error: "Must be a number" })
-  .min(0, "Min 0")
-  .max(100, "Max 100");
+import { 
+  api, 
+  StudentWithResults, 
+  ClassInsights, 
+  calculateClassInsights, 
+  SubjectConfig, 
+  DEFAULT_SUBJECTS 
+} from "@/lib/student_db";
 
 const studentFormSchema = z.object({
   name: z.string().min(2, "Invalid name"),
-  usn_number: z.string().regex(/^[1-9][A-Z]{2}\d{2}[A-Z]{2}\d{3}$/, "Format: e.g. 1RV26CS001"),
-  college: z.string().min(3, "Invalid college"),
-  math_score: scoreSchema,
-  python_score: scoreSchema,
-  ai_score: scoreSchema,
-  chemistry_score: scoreSchema,
-  ece_score: scoreSchema
+  usn_number: z.string().min(1, "USN is required"),
+  year: z.coerce.number().min(1).max(4),
+  semester: z.coerce.number().min(1).max(2)
 });
 
 type StudentFormData = z.infer<typeof studentFormSchema>;
@@ -49,11 +47,13 @@ export default function AdminView() {
   };
 
   const [records, setRecords] = useState<StudentWithResults[]>([]);
+  const [activeSubjects, setActiveSubjects] = useState<SubjectConfig[]>(DEFAULT_SUBJECTS);
   const [insights, setInsights] = useState<ClassInsights | null>(null);
   const [loading, setLoading] = useState(true);
   
   const [searchQuery, setSearchQuery] = useState("");
-  const [collegeFilter, setCollegeFilter] = useState("all");
+  const [yearFilter, setYearFilter] = useState("all");
+  const [semFilter, setSemFilter] = useState("all");
   
   const [sortField, setSortField] = useState<string>("usn_number");
   const [sortAscending, setSortAscending] = useState(true);
@@ -61,17 +61,22 @@ export default function AdminView() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [editingRecord, setEditingRecord] = useState<StudentWithResults | null>(null);
   
+  // Settings management
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [subjectsSettings, setSubjectsSettings] = useState<SubjectConfig[]>([]);
+  const [savingSettings, setSavingSettings] = useState(false);
+
   const [formData, setFormData] = useState<Partial<StudentFormData>>({
     name: "",
     usn_number: "",
-    college: "RV College of Engineering",
-    math_score: 0,
-    python_score: 0,
-    ai_score: 0,
-    chemistry_score: 0,
-    ece_score: 0
+    year: 1,
+    semester: 1
   });
+  
+  // Dynamic scores state for drawer
+  const [drawerScores, setDrawerScores] = useState<Record<string, string>>({});
   const [formErrors, setFormErrors] = useState<Partial<Record<keyof StudentFormData, string>>>({});
+  const [scoreErrors, setScoreErrors] = useState<Record<string, string>>({});
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
@@ -81,17 +86,19 @@ export default function AdminView() {
   const loadData = async () => {
     setLoading(true);
     try {
+      const subjectsList = await api.getSubjects();
+      setActiveSubjects(subjectsList);
+      setSubjectsSettings(subjectsList);
+      
       const allRecords = await api.getStudentsWithResults();
       setRecords(allRecords);
-      setInsights(calculateClassInsights(allRecords));
+      setInsights(calculateClassInsights(allRecords, subjectsList));
     } catch (err) {
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
-
-  const uniqueColleges = Array.from(new Set(records.map(r => r.college)));
 
   const handleSort = (field: string) => {
     if (sortField === field) {
@@ -107,20 +114,32 @@ export default function AdminView() {
       const query = searchQuery.toLowerCase();
       const matchesSearch = 
         record.name.toLowerCase().includes(query) || 
-        record.usn_number.toLowerCase().includes(query) ||
-        record.college.toLowerCase().includes(query);
+        record.usn_number.toLowerCase().includes(query);
         
-      const matchesCollege = collegeFilter === "all" || record.college === collegeFilter;
+      const matchesYear = yearFilter === "all" || String(record.year) === yearFilter;
+      const matchesSem = semFilter === "all" || String(record.semester) === semFilter;
       
-      return matchesSearch && matchesCollege;
+      return matchesSearch && matchesYear && matchesSem;
     })
     .sort((a, b) => {
       let valA: any = a[sortField as keyof StudentWithResults];
       let valB: any = b[sortField as keyof StudentWithResults];
       
-      if (["math_score", "python_score", "ai_score", "chemistry_score", "ece_score", "total", "gpa"].includes(sortField)) {
-        valA = a.results ? a.results[sortField as keyof typeof a.results] : 0;
-        valB = b.results ? b.results[sortField as keyof typeof b.results] : 0;
+      // Handle score sorting
+      if (sortField.startsWith("score_")) {
+        const subId = sortField.replace("score_", "");
+        valA = a.results?.subject_scores[subId] ?? -1;
+        valB = b.results?.subject_scores[subId] ?? -1;
+      } else if (sortField === "total") {
+        const scoresA = activeSubjects.map(s => a.results?.subject_scores[s.id] ?? 0);
+        valA = scoresA.reduce((sum, v) => sum + v, 0);
+        const scoresB = activeSubjects.map(s => b.results?.subject_scores[s.id] ?? 0);
+        valB = scoresB.reduce((sum, v) => sum + v, 0);
+      } else if (sortField === "gpa") {
+        const scoresA = activeSubjects.map(s => a.results?.subject_scores[s.id] ?? 0);
+        valA = scoresA.length > 0 ? (scoresA.reduce((sum, v) => sum + v, 0) / scoresA.length) / 10 : 0;
+        const scoresB = activeSubjects.map(s => b.results?.subject_scores[s.id] ?? 0);
+        valB = scoresB.length > 0 ? (scoresB.reduce((sum, v) => sum + v, 0) / scoresB.length) / 10 : 0;
       }
       
       if (valA === undefined || valA === null) valA = "";
@@ -152,59 +171,77 @@ export default function AdminView() {
 
   const openFormDrawer = (record: StudentWithResults | null = null) => {
     setFormErrors({});
+    setScoreErrors({});
+    
+    const initialScores: Record<string, string> = {};
+    
     if (record) {
       setEditingRecord(record);
       setFormData({
         name: record.name,
         usn_number: record.usn_number,
-        college: record.college,
-        math_score: record.results?.math_score ?? 0,
-        python_score: record.results?.python_score ?? 0,
-        ai_score: record.results?.ai_score ?? 0,
-        chemistry_score: record.results?.chemistry_score ?? 0,
-        ece_score: record.results?.ece_score ?? 0
+        year: record.year,
+        semester: record.semester
+      });
+      activeSubjects.forEach(sub => {
+        initialScores[sub.id] = String(record.results?.subject_scores[sub.id] ?? 0);
       });
     } else {
       setEditingRecord(null);
-      const randId = Math.floor(10 + Math.random() * 89);
       setFormData({
         name: "",
-        usn_number: `1RV26CS0${randId}`,
-        college: "RV College of Engineering",
-        math_score: 0,
-        python_score: 0,
-        ai_score: 0,
-        chemistry_score: 0,
-        ece_score: 0
+        usn_number: "",
+        year: 1,
+        semester: 1
+      });
+      activeSubjects.forEach(sub => {
+        initialScores[sub.id] = "0";
       });
     }
+    setDrawerScores(initialScores);
     setIsDrawerOpen(true);
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormErrors({});
+    setScoreErrors({});
     setIsSaving(true);
 
     try {
       const validatedData = studentFormSchema.parse(formData);
       
+      // Validate scores
+      const finalScores: Record<string, number> = {};
+      const scoreErrAccumulator: Record<string, string> = {};
+      let hasScoreErrors = false;
+
+      activeSubjects.forEach(sub => {
+        const rawScore = drawerScores[sub.id] ?? "0";
+        const scoreNum = Number(rawScore);
+        if (rawScore.trim() === "" || isNaN(scoreNum) || scoreNum < 0 || scoreNum > 100) {
+          scoreErrAccumulator[sub.id] = "Must be 0-100";
+          hasScoreErrors = true;
+        } else {
+          finalScores[sub.id] = scoreNum;
+        }
+      });
+
+      if (hasScoreErrors) {
+        setScoreErrors(scoreErrAccumulator);
+        setIsSaving(false);
+        return;
+      }
+      
       const studentPayload = {
         id: editingRecord?.id,
         name: validatedData.name,
         usn_number: validatedData.usn_number,
-        college: validatedData.college
+        year: validatedData.year,
+        semester: validatedData.semester
       };
       
-      const resultsPayload = {
-        math_score: validatedData.math_score,
-        python_score: validatedData.python_score,
-        ai_score: validatedData.ai_score,
-        chemistry_score: validatedData.chemistry_score,
-        ece_score: validatedData.ece_score
-      };
-      
-      const response = await api.upsertStudent(studentPayload, resultsPayload);
+      const response = await api.upsertStudent(studentPayload, finalScores);
       if (response.success) {
         setIsDrawerOpen(false);
         loadData();
@@ -233,6 +270,67 @@ export default function AdminView() {
       ...prev,
       [key]: val
     }));
+  };
+
+  const updateDrawerScore = (subId: string, val: string) => {
+    setDrawerScores(prev => ({
+      ...prev,
+      [subId]: val
+    }));
+  };
+
+  // Subjects settings operations
+  const handleAddSubjectConfig = () => {
+    const newId = `sub_${Date.now()}`;
+    const nextNum = subjectsSettings.length + 1;
+    setSubjectsSettings(prev => [
+      ...prev,
+      { id: newId, code: `10SUB${nextNum}`, name: "NEW SUBJECT" }
+    ]);
+  };
+
+  const handleUpdateSubjectConfig = (idx: number, key: keyof SubjectConfig, val: string) => {
+    setSubjectsSettings(prev => {
+      const copy = [...prev];
+      copy[idx] = {
+        ...copy[idx],
+        [key]: val
+      };
+      return copy;
+    });
+  };
+
+  const handleRemoveSubjectConfig = (idx: number) => {
+    setSubjectsSettings(prev => prev.filter((_, i) => i !== idx));
+  };
+
+  const handleSaveSubjectsSettings = async () => {
+    if (subjectsSettings.length === 0) {
+      alert("At least one subject is required.");
+      return;
+    }
+    
+    // Check for empty names or codes
+    if (subjectsSettings.some(s => !s.name.trim() || !s.code.trim())) {
+      alert("All subjects must have a code and a name.");
+      return;
+    }
+
+    setSavingSettings(true);
+    try {
+      const ok = await api.saveSubjects(subjectsSettings);
+      if (ok) {
+        setIsSettingsOpen(false);
+        loadData();
+      } else {
+        alert("Failed to save configuration.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error saving settings.");
+    } finally {
+      setSavingSettings(false);
+    }
   };
 
   if (!isAuthenticated) {
@@ -301,6 +399,14 @@ export default function AdminView() {
 
         <div className="flex items-center gap-3">
           <button
+            onClick={() => setIsSettingsOpen(true)}
+            className="border border-slate-200 hover:border-slate-900 bg-white text-slate-800 hover:text-slate-900 px-4 py-2 text-xs font-black uppercase tracking-wider transition-colors cursor-pointer flex items-center gap-2"
+          >
+            <Settings className="h-3.5 w-3.5" />
+            Manage Subjects
+          </button>
+
+          <button
             onClick={() => openFormDrawer()}
             className="bg-slate-900 hover:bg-slate-950 text-white px-4 py-2 text-xs font-black uppercase tracking-wider transition-colors cursor-pointer"
           >
@@ -349,27 +455,24 @@ export default function AdminView() {
         {/* Card 4: Subject Performance Statistics */}
         <section className="border border-slate-300 bg-white p-6 shadow-xs">
           <span className="text-[9px] font-black text-slate-400 tracking-widest block mb-4">SUBJECT AVERAGES</span>
-          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {[
-              { label: "Maths", value: insights?.avg_math ?? 0, color: "bg-slate-800" },
-              { label: "Python", value: insights?.avg_python ?? 0, color: "bg-slate-800" },
-              { label: "Intro to AI", value: insights?.avg_ai ?? 0, color: "bg-slate-800" },
-              { label: "Chemistry", value: insights?.avg_chem ?? 0, color: "bg-slate-800" },
-              { label: "ECE", value: insights?.avg_ece ?? 0, color: "bg-slate-800" }
-            ].map((sub, idx) => (
-              <div key={idx} className="bg-slate-50 border border-slate-200 p-4 flex flex-col justify-between">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-[9px] font-bold text-slate-500 tracking-wide">{sub.label}</span>
-                  <span className="text-xs font-black font-mono text-slate-800">{loading ? "--" : `${sub.value}%`}</span>
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {activeSubjects.map((sub, idx) => {
+              const value = insights?.avg_subjects[sub.id] ?? 0;
+              return (
+                <div key={idx} className="bg-slate-50 border border-slate-200 p-4 flex flex-col justify-between">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-[9px] font-bold text-slate-505 tracking-wide line-clamp-1">{sub.name}</span>
+                    <span className="text-xs font-black font-mono text-slate-800">{loading ? "--" : `${value}%`}</span>
+                  </div>
+                  <div className="h-1 bg-slate-200 w-full mt-1">
+                    <div 
+                      className="h-full bg-slate-800"
+                      style={{ width: loading ? "0" : `${value}%` }}
+                    />
+                  </div>
                 </div>
-                <div className="h-1 bg-slate-200 w-full">
-                  <div 
-                    className={`h-full ${sub.color}`}
-                    style={{ width: loading ? "0" : `${sub.value}%` }}
-                  />
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -391,16 +494,32 @@ export default function AdminView() {
                 />
               </div>
 
+              {/* Year Filter */}
               <div className="relative">
                 <select
-                  value={collegeFilter}
-                  onChange={(e) => setCollegeFilter(e.target.value)}
-                  className="bg-white border border-slate-200 hover:border-slate-350 rounded-none px-3 py-2 pr-8 text-xs text-slate-700 outline-none appearance-none cursor-pointer"
+                  value={yearFilter}
+                  onChange={(e) => setYearFilter(e.target.value)}
+                  className="bg-white border border-slate-200 hover:border-slate-350 rounded-none px-3 py-2 pr-8 text-xs text-slate-705 outline-none appearance-none cursor-pointer"
                 >
-                  <option value="all">ALL COLLEGES</option>
-                  {uniqueColleges.map((c, i) => (
-                    <option key={i} value={c}>{c}</option>
-                  ))}
+                  <option value="all">ALL YEARS</option>
+                  <option value="1">YEAR 1</option>
+                  <option value="2">YEAR 2</option>
+                  <option value="3">YEAR 3</option>
+                  <option value="4">YEAR 4</option>
+                </select>
+                <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
+              </div>
+
+              {/* Semester Filter */}
+              <div className="relative">
+                <select
+                  value={semFilter}
+                  onChange={(e) => setSemFilter(e.target.value)}
+                  className="bg-white border border-slate-200 hover:border-slate-350 rounded-none px-3 py-2 pr-8 text-xs text-slate-705 outline-none appearance-none cursor-pointer"
+                >
+                  <option value="all">ALL SEMESTERS</option>
+                  <option value="1">SEMESTER 1</option>
+                  <option value="2">SEMESTER 2</option>
                 </select>
                 <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
               </div>
@@ -410,15 +529,23 @@ export default function AdminView() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 bg-slate-50 text-[9px] font-bold text-slate-500 tracking-wider select-none">
+                <tr className="border-b border-slate-200 bg-slate-50 text-[9px] font-bold text-slate-505 tracking-wider select-none">
                   <th onClick={() => handleSort("usn_number")} className="px-6 py-4 cursor-pointer hover:text-slate-900">USN</th>
                   <th onClick={() => handleSort("name")} className="px-6 py-4 cursor-pointer hover:text-slate-900">NAME</th>
-                  <th className="px-6 py-4">COLLEGE</th>
-                  <th onClick={() => handleSort("math_score")} className="px-4 py-4 text-center cursor-pointer hover:text-slate-900">MATH</th>
-                  <th onClick={() => handleSort("python_score")} className="px-4 py-4 text-center cursor-pointer hover:text-slate-900">PYTHON</th>
-                  <th onClick={() => handleSort("ai_score")} className="px-4 py-4 text-center cursor-pointer hover:text-slate-900">AI</th>
-                  <th onClick={() => handleSort("chemistry_score")} className="px-4 py-4 text-center cursor-pointer hover:text-slate-900">CHEM</th>
-                  <th onClick={() => handleSort("ece_score")} className="px-4 py-4 text-center cursor-pointer hover:text-slate-900">ECE</th>
+                  <th onClick={() => handleSort("year")} className="px-4 py-4 text-center cursor-pointer hover:text-slate-900">YEAR</th>
+                  <th onClick={() => handleSort("semester")} className="px-4 py-4 text-center cursor-pointer hover:text-slate-900">SEM</th>
+                  
+                  {/* Dynamic Subjects headers */}
+                  {activeSubjects.map(sub => (
+                    <th 
+                      key={sub.id} 
+                      onClick={() => handleSort(`score_${sub.id}`)} 
+                      className="px-4 py-4 text-center cursor-pointer hover:text-slate-900"
+                    >
+                      {sub.name}
+                    </th>
+                  ))}
+
                   <th onClick={() => handleSort("total")} className="px-4 py-4 text-center cursor-pointer hover:text-slate-900">TOTAL</th>
                   <th onClick={() => handleSort("gpa")} className="px-4 py-4 text-center cursor-pointer hover:text-slate-900">GPA</th>
                   <th className="px-6 py-4 text-center">STATUS</th>
@@ -428,13 +555,13 @@ export default function AdminView() {
               <tbody className="divide-y divide-slate-100 text-xs">
                 {loading ? (
                   <tr>
-                    <td colSpan={12} className="px-6 py-12 text-center text-slate-400">
+                    <td colSpan={8 + activeSubjects.length} className="px-6 py-12 text-center text-slate-400">
                       LOADING...
                     </td>
                   </tr>
                 ) : filteredRecords.length === 0 ? (
                   <tr>
-                    <td colSpan={12} className="px-6 py-12 text-center text-slate-400 italic">
+                    <td colSpan={8 + activeSubjects.length} className="px-6 py-12 text-center text-slate-400 italic">
                       NO RECORDS.
                     </td>
                   </tr>
@@ -442,57 +569,40 @@ export default function AdminView() {
                   <AnimatePresence>
                     {filteredRecords.map((record) => {
                       const res = record.results;
-                      const isMathFail = (res?.math_score ?? 0) < 40;
-                      const isPythonFail = (res?.python_score ?? 0) < 40;
-                      const isAiFail = (res?.ai_score ?? 0) < 40;
-                      const isChemFail = (res?.chemistry_score ?? 0) < 40;
-                      const isEceFail = (res?.ece_score ?? 0) < 40;
-                      const backlogs = [isMathFail, isPythonFail, isAiFail, isChemFail, isEceFail].filter(Boolean).length;
+                      
+                      const scores = res ? activeSubjects.map(s => res.subject_scores[s.id]).filter(v => v !== undefined && v !== null) : [];
+                      const totalVal = scores.reduce((a, b) => a + b, 0);
+                      const avgPct = scores.length > 0 ? totalVal / activeSubjects.length : 0;
+                      const gpaVal = avgPct / 10;
+                      
+                      const backlogs = res ? activeSubjects.map(s => res.subject_scores[s.id] ?? 0).filter(s => s < 40).length : 0;
                       
                       return (
                         <tr key={record.id} className="hover:bg-slate-50/60 transition-colors group">
                           <td className="px-6 py-4 font-mono font-bold text-slate-755">{record.usn_number}</td>
                           <td className="px-6 py-4 font-bold text-slate-900 uppercase">{record.name}</td>
-                          <td className="px-6 py-4 text-slate-500 uppercase">{record.college}</td>
+                          <td className="px-4 py-4 text-center font-mono text-slate-500">Y{record.year}</td>
+                          <td className="px-4 py-4 text-center font-mono text-slate-500">S{record.semester}</td>
                           
-                          <td className="px-4 py-4 text-center">
-                            <span className={`inline-block px-2 py-0.5 font-mono font-bold border ${
-                              isMathFail ? "bg-rose-50 text-rose-600 border-rose-100" : "bg-emerald-50 text-emerald-700 border-emerald-100"
-                            }`}>
-                              {res?.math_score ?? "--"}
-                            </span>
-                          </td>
-                          <td className="px-4 py-4 text-center">
-                            <span className={`inline-block px-2 py-0.5 font-mono font-bold border ${
-                              isPythonFail ? "bg-rose-50 text-rose-600 border-rose-100" : "bg-emerald-50 text-emerald-700 border-emerald-100"
-                            }`}>
-                              {res?.python_score ?? "--"}
-                            </span>
-                          </td>
-                          <td className="px-4 py-4 text-center">
-                            <span className={`inline-block px-2 py-0.5 font-mono font-bold border ${
-                              isAiFail ? "bg-rose-50 text-rose-600 border-rose-100" : "bg-emerald-50 text-emerald-700 border-emerald-100"
-                            }`}>
-                              {res?.ai_score ?? "--"}
-                            </span>
-                          </td>
-                          <td className="px-4 py-4 text-center">
-                            <span className={`inline-block px-2 py-0.5 font-mono font-bold border ${
-                              isChemFail ? "bg-rose-50 text-rose-600 border-rose-100" : "bg-emerald-50 text-emerald-700 border-emerald-100"
-                            }`}>
-                              {res?.chemistry_score ?? "--"}
-                            </span>
-                          </td>
-                          <td className="px-4 py-4 text-center">
-                            <span className={`inline-block px-2 py-0.5 font-mono font-bold border ${
-                              isEceFail ? "bg-rose-50 text-rose-600 border-rose-100" : "bg-emerald-50 text-emerald-700 border-emerald-100"
-                            }`}>
-                              {res?.ece_score ?? "--"}
-                            </span>
-                          </td>
+                          {/* Dynamic scores cells */}
+                          {activeSubjects.map((sub) => {
+                            const score = res?.subject_scores[sub.id];
+                            const hasScore = score !== undefined && score !== null;
+                            const isFail = hasScore && score < 40;
+                            return (
+                              <td key={sub.id} className="px-4 py-4 text-center">
+                                <span className={`inline-block px-2 py-0.5 font-mono font-bold border ${
+                                  !hasScore ? "bg-slate-50 text-slate-400 border-slate-100" :
+                                  isFail ? "bg-rose-50 text-rose-600 border-rose-100" : "bg-emerald-50 text-emerald-700 border-emerald-100"
+                                }`}>
+                                  {hasScore ? score : "--"}
+                                </span>
+                              </td>
+                            );
+                          })}
                           
-                          <td className="px-4 py-4 text-center font-mono font-bold text-slate-700">{res?.total ?? "--"}</td>
-                          <td className="px-4 py-4 text-center font-mono font-black text-slate-900">{res?.gpa ? res.gpa.toFixed(2) : "--"}</td>
+                          <td className="px-4 py-4 text-center font-mono font-bold text-slate-700">{res ? totalVal : "--"}</td>
+                          <td className="px-4 py-4 text-center font-mono font-black text-slate-900">{res ? gpaVal.toFixed(2) : "--"}</td>
                           
                           <td className="px-6 py-4 text-center">
                             <span className={`px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase border ${
@@ -531,7 +641,7 @@ export default function AdminView() {
         </section>
       </main>
 
-      {/* Slide-out Form Drawer */}
+      {/* Slide-out Form Drawer (Add/Edit Student) */}
       <AnimatePresence>
         {isDrawerOpen && (
           <>
@@ -597,12 +707,38 @@ export default function AdminView() {
                     <label className="block text-[10px] font-bold text-slate-700 mb-1">COLLEGE</label>
                     <input
                       type="text"
-                      placeholder="COLLEGE"
-                      value={formData.college || ""}
-                      onChange={(e) => updateFormField("college", e.target.value)}
-                      className="w-full bg-white border border-slate-200 hover:border-slate-350 focus:border-slate-800 rounded-none px-3 py-2 text-xs uppercase"
+                      value="RATHINAM INSTITUTE OF TECHNOLOGY"
+                      disabled
+                      className="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-2 text-xs uppercase text-slate-500 font-bold"
                     />
-                    {formErrors.college && <p className="text-[10px] text-rose-600 mt-1">{formErrors.college}</p>}
+                  </div>
+
+                  {/* Year and Semester Selection */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-700 mb-1">YEAR</label>
+                      <select
+                        value={formData.year || 1}
+                        onChange={(e) => updateFormField("year", Number(e.target.value))}
+                        className="w-full bg-white border border-slate-200 hover:border-slate-350 focus:border-slate-800 rounded-none px-3 py-2 text-xs outline-none cursor-pointer"
+                      >
+                        <option value={1}>YEAR 1</option>
+                        <option value={2}>YEAR 2</option>
+                        <option value={3}>YEAR 3</option>
+                        <option value={4}>YEAR 4</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-700 mb-1">SEMESTER</label>
+                      <select
+                        value={formData.semester || 1}
+                        onChange={(e) => updateFormField("semester", Number(e.target.value))}
+                        className="w-full bg-white border border-slate-200 hover:border-slate-350 focus:border-slate-800 rounded-none px-3 py-2 text-xs outline-none cursor-pointer"
+                      >
+                        <option value={1}>SEMESTER 1</option>
+                        <option value={2}>SEMESTER 2</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
 
@@ -611,61 +747,19 @@ export default function AdminView() {
                     MARKS
                   </span>
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[10px] font-bold text-slate-700 mb-1">MATHS</label>
-                      <input
-                        type="text"
-                        value={formData.math_score ?? ""}
-                        onChange={(e) => updateFormField("math_score", e.target.value)}
-                        className="w-full bg-white border border-slate-200 hover:border-slate-350 focus:border-slate-800 rounded-none px-3 py-2 text-xs font-mono outline-none"
-                      />
-                      {formErrors.math_score && <p className="text-[10px] text-rose-600 mt-1">{formErrors.math_score}</p>}
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] font-bold text-slate-700 mb-1">PYTHON</label>
-                      <input
-                        type="text"
-                        value={formData.python_score ?? ""}
-                        onChange={(e) => updateFormField("python_score", e.target.value)}
-                        className="w-full bg-white border border-slate-200 hover:border-slate-350 focus:border-slate-800 rounded-none px-3 py-2 text-xs font-mono outline-none"
-                      />
-                      {formErrors.python_score && <p className="text-[10px] text-rose-600 mt-1">{formErrors.python_score}</p>}
-                    </div>
-
-                    <div className="col-span-2">
-                      <label className="block text-[10px] font-bold text-slate-700 mb-1">INTRODUCTION TO AI</label>
-                      <input
-                        type="text"
-                        value={formData.ai_score ?? ""}
-                        onChange={(e) => updateFormField("ai_score", e.target.value)}
-                        className="w-full bg-white border border-slate-200 hover:border-slate-350 focus:border-slate-800 rounded-none px-3 py-2 text-xs font-mono outline-none"
-                      />
-                      {formErrors.ai_score && <p className="text-[10px] text-rose-600 mt-1">{formErrors.ai_score}</p>}
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] font-bold text-slate-700 mb-1">CHEMISTRY</label>
-                      <input
-                        type="text"
-                        value={formData.chemistry_score ?? ""}
-                        onChange={(e) => updateFormField("chemistry_score", e.target.value)}
-                        className="w-full bg-white border border-slate-200 hover:border-slate-350 focus:border-slate-800 rounded-none px-3 py-2 text-xs font-mono outline-none"
-                      />
-                      {formErrors.chemistry_score && <p className="text-[10px] text-rose-600 mt-1">{formErrors.chemistry_score}</p>}
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] font-bold text-slate-700 mb-1">ECE</label>
-                      <input
-                        type="text"
-                        value={formData.ece_score ?? ""}
-                        onChange={(e) => updateFormField("ece_score", e.target.value)}
-                        className="w-full bg-white border border-slate-200 hover:border-slate-350 focus:border-slate-800 rounded-none px-3 py-2 text-xs font-mono outline-none"
-                      />
-                      {formErrors.ece_score && <p className="text-[10px] text-rose-600 mt-1">{formErrors.ece_score}</p>}
-                    </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {activeSubjects.map((sub) => (
+                      <div key={sub.id} className={activeSubjects.length % 2 !== 0 && activeSubjects[activeSubjects.length - 1].id === sub.id ? "sm:col-span-2" : ""}>
+                        <label className="block text-[10px] font-bold text-slate-705 mb-1 truncate">{sub.name}</label>
+                        <input
+                          type="text"
+                          value={drawerScores[sub.id] ?? ""}
+                          onChange={(e) => updateDrawerScore(sub.id, e.target.value)}
+                          className="w-full bg-white border border-slate-200 hover:border-slate-350 focus:border-slate-800 rounded-none px-3 py-2 text-xs font-mono outline-none"
+                        />
+                        {scoreErrors[sub.id] && <p className="text-[10px] text-rose-600 mt-1">{scoreErrors[sub.id]}</p>}
+                      </div>
+                    ))}
                   </div>
                 </div>
 
@@ -692,6 +786,116 @@ export default function AdminView() {
           </>
         )}
       </AnimatePresence>
+
+      {/* Settings Modal (Manage Subjects) */}
+      <AnimatePresence>
+        {isSettingsOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsSettingsOpen(false)}
+              className="fixed inset-0 bg-slate-900/25 backdrop-blur-xs z-50 flex items-center justify-center"
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-2xl bg-white border border-slate-300 shadow-2xl p-6 space-y-6 max-h-[85vh] flex flex-col uppercase text-xs"
+              >
+                <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+                  <span className="font-black tracking-widest text-slate-900">Manage Course Subjects</span>
+                  <button 
+                    onClick={() => setIsSettingsOpen(false)}
+                    className="p-1.5 border border-slate-200 hover:border-slate-800 text-slate-400 hover:text-slate-800 cursor-pointer"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+
+                <div className="flex-1 overflow-y-auto space-y-4 pr-1">
+                  <div className="bg-amber-50 border border-amber-200 p-3 text-amber-800 flex items-start gap-2.5">
+                    <AlertTriangle className="h-4 w-4 shrink-0 text-amber-705 mt-0.5" />
+                    <div className="text-[10px] leading-normal font-bold">
+                      WARNING: RENAMING A SUBJECT PRESERVES EXISTING SCORES, BUT DELETING A SUBJECT WILL REMOVE THOSE EXAM MARKS FOR ALL REGISTERED STUDENTS.
+                    </div>
+                  </div>
+
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="border-b border-slate-200 text-[9px] font-bold text-slate-400 tracking-wider">
+                        <th className="py-2 pr-4 w-1/4">SUBJECT CODE</th>
+                        <th className="py-2 pr-4 w-2/3">SUBJECT NAME</th>
+                        <th className="py-2 text-right">ACTION</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {subjectsSettings.map((sub, idx) => (
+                        <tr key={sub.id}>
+                          <td className="py-3 pr-4">
+                            <input
+                              type="text"
+                              value={sub.code}
+                              onChange={(e) => handleUpdateSubjectConfig(idx, "code", e.target.value.toUpperCase())}
+                              className="w-full bg-white border border-slate-200 hover:border-slate-350 focus:border-slate-800 rounded-none px-2 py-1 text-xs font-mono outline-none"
+                              placeholder="E.G. 10MAT21"
+                            />
+                          </td>
+                          <td className="py-3 pr-4">
+                            <input
+                              type="text"
+                              value={sub.name}
+                              onChange={(e) => handleUpdateSubjectConfig(idx, "name", e.target.value.toUpperCase())}
+                              className="w-full bg-white border border-slate-200 hover:border-slate-350 focus:border-slate-800 rounded-none px-2 py-1 text-xs outline-none"
+                              placeholder="E.G. MATHEMATICS"
+                            />
+                          </td>
+                          <td className="py-3 text-right">
+                            <button
+                              onClick={() => handleRemoveSubjectConfig(idx)}
+                              className="p-1.5 border border-slate-200 hover:border-rose-800 text-slate-400 hover:text-rose-600 transition-colors cursor-pointer"
+                              title="Delete Subject"
+                            >
+                              <Trash2 className="h-3.5 w-3.5" />
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+
+                  <button
+                    onClick={handleAddSubjectConfig}
+                    className="w-full border border-dashed border-slate-300 hover:border-slate-900 bg-slate-50 hover:bg-white text-slate-650 hover:text-slate-900 font-bold py-2.5 text-center transition-all cursor-pointer"
+                  >
+                    + Add New Subject
+                  </button>
+                </div>
+
+                <div className="border-t border-slate-200 pt-4 flex items-center justify-end gap-3">
+                  <button
+                    onClick={() => setIsSettingsOpen(false)}
+                    className="border border-slate-200 hover:border-slate-800 px-4 py-2 font-bold cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleSaveSubjectsSettings}
+                    disabled={savingSettings}
+                    className="bg-slate-900 hover:bg-slate-950 text-white px-5 py-2 font-black tracking-wider transition-colors cursor-pointer flex items-center gap-2"
+                  >
+                    {savingSettings && <RefreshCw className="h-3 w-3 animate-spin" />}
+                    Save Configuration
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 }

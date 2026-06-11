@@ -1,16 +1,29 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, ArrowLeft, RefreshCw, Printer } from "lucide-react";
-import { api, StudentWithResults } from "@/lib/student_db";
+import { Search, ArrowLeft, RefreshCw } from "lucide-react";
+import { api, StudentWithResults, SubjectConfig, DEFAULT_SUBJECTS } from "@/lib/student_db";
 
 export default function StudentView() {
   const [usnInput, setUsnInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [studentData, setStudentData] = useState<StudentWithResults | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [activeSubjects, setActiveSubjects] = useState<SubjectConfig[]>(DEFAULT_SUBJECTS);
+
+  useEffect(() => {
+    const fetchSubjects = async () => {
+      try {
+        const list = await api.getSubjects();
+        setActiveSubjects(list);
+      } catch (err) {
+        console.error("Error loading subjects settings in StudentView:", err);
+      }
+    };
+    fetchSubjects();
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,16 +64,14 @@ export default function StudentView() {
   };
 
   const res = studentData?.results;
-  const percentage = res?.total ? (res.total / 5).toFixed(2) : "0.00";
-  const gpa = res?.gpa ? res.gpa.toFixed(2) : "0.00";
   
-  const backlogs = res ? [
-    res.math_score, 
-    res.python_score, 
-    res.ai_score, 
-    res.chemistry_score, 
-    res.ece_score
-  ].filter(s => s < 40).length : 0;
+  const scores = res ? activeSubjects.map(sub => res.subject_scores[sub.id] ?? 0) : [];
+  const totalVal = scores.reduce((sum, score) => sum + score, 0);
+  
+  const percentage = activeSubjects.length > 0 ? (totalVal / activeSubjects.length).toFixed(2) : "0.00";
+  const gpa = activeSubjects.length > 0 ? (totalVal / activeSubjects.length / 10).toFixed(2) : "0.00";
+  
+  const backlogs = scores.filter(s => s < 40).length;
 
   const getGrade = (score: number) => {
     if (score >= 90) return "S";
@@ -72,16 +83,14 @@ export default function StudentView() {
     return "F";
   };
 
-  const subjects = res ? [
-    { code: "10MAT21", name: "MATHEMATICS", score: res.math_score },
-    { code: "10CS22", name: "PYTHON PROGRAMMING", score: res.python_score },
-    { code: "10AI23", name: "INTRODUCTION TO AI", score: res.ai_score },
-    { code: "10CH24", name: "ENGINEERING CHEMISTRY", score: res.chemistry_score },
-    { code: "10EC25", name: "ELECTRONICS & COMMUNICATION", score: res.ece_score }
-  ] : [];
+  const subjects = res ? activeSubjects.map(sub => ({
+    code: sub.code,
+    name: sub.name,
+    score: res.subject_scores[sub.id] ?? 0
+  })) : [];
 
   return (
-    <div className="w-full min-h-screen flex flex-col justify-between relative z-10 bg-[#f8fafc]">
+    <div className="w-full min-h-screen flex flex-col justify-between relative z-10 bg-[#f8fafc] text-xs">
       
       {/* Header */}
       <header className="border-b border-slate-200 bg-white sticky top-0 z-40 px-6 py-4 flex items-center justify-between no-print">
@@ -186,7 +195,7 @@ export default function StudentView() {
 
               {/* Profile details */}
               <div className="border border-slate-300 bg-white p-6">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs uppercase">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-xs uppercase">
                   <div>
                     <span className="text-[9px] font-bold text-slate-400 block tracking-wider">NAME</span>
                     <span className="font-black text-slate-900 block mt-1">{studentData.name}</span>
@@ -195,9 +204,19 @@ export default function StudentView() {
                     <span className="text-[9px] font-bold text-slate-400 block tracking-wider">USN</span>
                     <span className="font-mono font-bold text-slate-900 block mt-1">{studentData.usn_number}</span>
                   </div>
-                  <div className="col-span-2 md:col-span-2">
+                  <div className="col-span-2">
                     <span className="text-[9px] font-bold text-slate-400 block tracking-wider">COLLEGE</span>
                     <span className="font-black text-slate-900 block mt-1">{studentData.college}</span>
+                  </div>
+                  <div className="flex gap-4">
+                    <div>
+                      <span className="text-[9px] font-bold text-slate-400 block tracking-wider">YEAR</span>
+                      <span className="font-mono font-bold text-slate-900 block mt-1">{studentData.year}</span>
+                    </div>
+                    <div>
+                      <span className="text-[9px] font-bold text-slate-400 block tracking-wider">SEM</span>
+                      <span className="font-mono font-bold text-slate-900 block mt-1">{studentData.semester}</span>
+                    </div>
                   </div>
                 </div>
               </div>
