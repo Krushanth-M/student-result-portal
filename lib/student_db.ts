@@ -85,7 +85,7 @@ const DUMMY_RESULTS: Results[] = [
   { id: "r2", student_id: "s2", subject_scores: { "sub_1": 99, "sub_2": 99, "sub_3": 99, "sub_4": 99, "sub_5": 98, "sub_6": 99, "sub_7": 97 } }
 ];
 
-const delay = (ms = 400) => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms = 0) => Promise.resolve();
 
 const getLocalData = (): { students: Student[]; results: Results[]; subjects: SubjectConfig[] } => {
   if (typeof window === "undefined") {

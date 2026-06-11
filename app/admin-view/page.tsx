@@ -580,7 +580,19 @@ export default function AdminView() {
                       return (
                         <tr key={record.id} className="hover:bg-slate-50/60 transition-colors group">
                           <td className="px-6 py-4 font-mono font-bold text-slate-755">{record.usn_number}</td>
-                          <td className="px-6 py-4 font-bold text-slate-900 uppercase">{record.name}</td>
+                          <td className="px-6 py-4">
+                            <div className="flex flex-col gap-1">
+                              <span className="font-bold text-slate-900 uppercase">{record.name}</span>
+                              {res && (
+                                <div className="h-1 w-24 bg-slate-100 relative mt-0.5 no-print" title={`${avgPct.toFixed(1)}% Average`}>
+                                  <div 
+                                    className={`h-full ${backlogs > 0 ? "bg-rose-500" : "bg-slate-800"}`} 
+                                    style={{ width: `${avgPct}%` }} 
+                                  />
+                                </div>
+                              )}
+                            </div>
+                          </td>
                           <td className="px-4 py-4 text-center font-mono text-slate-500">Y{record.year}</td>
                           <td className="px-4 py-4 text-center font-mono text-slate-500">S{record.semester}</td>
                           

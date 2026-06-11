@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, ArrowLeft, RefreshCw } from "lucide-react";
+import { Search, ArrowLeft, RefreshCw, X } from "lucide-react";
 import { api, StudentWithResults, SubjectConfig, DEFAULT_SUBJECTS } from "@/lib/student_db";
 
 export default function StudentView() {
@@ -144,9 +144,18 @@ export default function StudentView() {
                       placeholder="USN"
                       value={usnInput}
                       onChange={(e) => setUsnInput(e.target.value)}
-                      className="w-full bg-white border border-slate-300 focus:border-slate-850 rounded-none px-4 py-3 text-xs font-mono text-slate-800 outline-none uppercase"
+                      className="w-full bg-white border border-slate-300 focus:border-slate-850 rounded-none pl-4 pr-10 py-3 text-xs font-mono text-slate-800 outline-none uppercase"
                     />
-                    <Search className="absolute right-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                    {usnInput && (
+                      <button
+                        type="button"
+                        onClick={() => setUsnInput("")}
+                        className="absolute right-9 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-850 transition-colors"
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    )}
+                    <Search className="absolute right-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
                   </div>
                   {errorMsg && (
                     <p className="text-[10px] font-bold text-rose-600 font-mono tracking-wider text-center uppercase">
@@ -260,6 +269,38 @@ export default function StudentView() {
                     })}
                   </tbody>
                 </table>
+              </div>
+
+              {/* Subject-Wise Analysis SVG Bar Chart */}
+              <div className="border border-slate-300 bg-white p-6 shadow-xs space-y-6 no-print">
+                <span className="text-[9px] font-black text-slate-400 tracking-widest block">SUBJECT-WISE PERFORMANCE</span>
+                <div className="w-full h-44 flex items-end justify-between pt-6 border-b border-slate-200 px-2 sm:px-6">
+                  {subjects.map((sub, idx) => {
+                    const barHeight = `${sub.score}%`;
+                    const isFail = sub.score < 40;
+                    return (
+                      <div key={idx} className="flex flex-col items-center group w-12 h-full justify-end relative">
+                        {/* Score Bubble */}
+                        <div className="absolute -top-6 bg-slate-900 text-white font-mono font-bold text-[9px] px-1.5 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none select-none uppercase z-10">
+                          {sub.score}
+                        </div>
+                        
+                        {/* Dynamic Bar with hover effect */}
+                        <div 
+                          className={`w-5 sm:w-6 transition-all duration-300 ease-out ${
+                            isFail ? "bg-rose-500 hover:bg-rose-600" : "bg-slate-800 hover:bg-slate-900"
+                          }`}
+                          style={{ height: barHeight }}
+                        />
+                        
+                        {/* Label */}
+                        <span className="text-[8px] font-bold text-slate-450 tracking-wider mt-2 truncate w-full text-center uppercase" title={sub.name}>
+                          {sub.code}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Summary Metrics */}
