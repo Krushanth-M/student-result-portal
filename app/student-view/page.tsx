@@ -273,33 +273,123 @@ export default function StudentView() {
 
               {/* Subject-Wise Analysis SVG Bar Chart */}
               <div className="border border-slate-300 bg-white p-6 shadow-xs space-y-6 no-print">
-                <span className="text-[9px] font-black text-slate-400 tracking-widest block">SUBJECT-WISE PERFORMANCE</span>
-                <div className="w-full h-44 flex items-end justify-between pt-6 border-b border-slate-200 px-2 sm:px-6">
-                  {subjects.map((sub, idx) => {
-                    const barHeight = `${sub.score}%`;
-                    const isFail = sub.score < 40;
-                    return (
-                      <div key={idx} className="flex flex-col items-center group w-12 h-full justify-end relative">
-                        {/* Score Bubble */}
-                        <div className="absolute -top-6 bg-slate-900 text-white font-mono font-bold text-[9px] px-1.5 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none select-none uppercase z-10">
-                          {sub.score}
-                        </div>
+                <span className="text-[9px] font-black text-slate-400 tracking-widest block">SUBJECT-WISE PERFORMANCE ANALYSIS</span>
+                
+                <div className="w-full overflow-x-auto">
+                  <div className="min-w-[640px]">
+                    <svg viewBox="0 0 800 260" className="w-full h-auto select-none">
+                      {/* Grid Lines & Y-Axis Labels */}
+                      {[100, 75, 50, 25, 0].map((level, idx) => {
+                        const y = 25 + 180 * (1 - level / 100);
+                        return (
+                          <g key={idx}>
+                            <line 
+                              x1="45" 
+                              y1={y} 
+                              x2="780" 
+                              y2={y} 
+                              stroke="#e2e8f0" 
+                              strokeDasharray="4 4" 
+                              strokeWidth="1" 
+                            />
+                            <text 
+                              x="35" 
+                              y={y + 3} 
+                              textAnchor="end" 
+                              className="font-mono text-[9px] font-black fill-slate-405"
+                            >
+                              {level}
+                            </text>
+                          </g>
+                        );
+                      })}
+
+                      {/* Bars & Labels */}
+                      {subjects.map((sub, idx) => {
+                        const numSubjects = subjects.length || 1;
+                        const colWidth = 735 / numSubjects;
+                        const barWidth = Math.min(colWidth * 0.45, 40); // Max width of 40px for clean layout
+                        const x = 45 + (idx * colWidth) + (colWidth - barWidth) / 2;
                         
-                        {/* Dynamic Bar with hover effect */}
-                        <div 
-                          className={`w-5 sm:w-6 transition-all duration-300 ease-out ${
-                            isFail ? "bg-rose-500 hover:bg-rose-600" : "bg-slate-800 hover:bg-slate-900"
-                          }`}
-                          style={{ height: barHeight }}
-                        />
-                        
-                        {/* Label */}
-                        <span className="text-[8px] font-bold text-slate-450 tracking-wider mt-2 truncate w-full text-center uppercase" title={sub.name}>
-                          {sub.code}
-                        </span>
-                      </div>
-                    );
-                  })}
+                        const score = sub.score;
+                        const isFail = score < 40;
+                        const barHeight = 180 * (score / 100);
+                        const y = 25 + (180 - barHeight);
+
+                        return (
+                          <g key={idx} className="group">
+                            {score > 0 ? (
+                              <>
+                                {/* Bar rect */}
+                                <rect 
+                                  x={x} 
+                                  y={y} 
+                                  width={barWidth} 
+                                  height={barHeight} 
+                                  fill={isFail ? "#f43f5e" : "#0f172a"}
+                                  className="transition-all duration-300 hover:opacity-90"
+                                />
+                                
+                                {/* Score value text above bar */}
+                                <text 
+                                  x={x + barWidth / 2} 
+                                  y={y - 8} 
+                                  textAnchor="middle" 
+                                  className="font-mono text-[10px] font-black fill-slate-900"
+                                >
+                                  {score}
+                                </text>
+                              </>
+                            ) : (
+                              <>
+                                {/* Empty/Zero Score Placeholder Box */}
+                                <rect 
+                                  x={x} 
+                                  y={25} 
+                                  width={barWidth} 
+                                  height={180} 
+                                  fill="none" 
+                                  stroke="#e2e8f0" 
+                                  strokeDasharray="3 3" 
+                                  strokeWidth="1" 
+                                />
+                                
+                                {/* Placeholder text */}
+                                <text 
+                                  x={x + barWidth / 2} 
+                                  y={205 - 8} 
+                                  textAnchor="middle" 
+                                  className="font-mono text-[9px] font-black fill-slate-300"
+                                >
+                                  --
+                                </text>
+                              </>
+                            )}
+
+                            {/* X-Axis Subject Code Label */}
+                            <text 
+                              x={x + barWidth / 2} 
+                              y={225} 
+                              textAnchor="middle" 
+                              className="font-mono text-[9px] font-black fill-slate-800"
+                            >
+                              {sub.code}
+                            </text>
+
+                            {/* Truncated Subject Name */}
+                            <text 
+                              x={x + barWidth / 2} 
+                              y={238} 
+                              textAnchor="middle" 
+                              className="text-[8px] font-bold fill-slate-450 tracking-wider"
+                            >
+                              {sub.name.length > 15 ? `${sub.name.slice(0, 13)}...` : sub.name}
+                            </text>
+                          </g>
+                        );
+                      })}
+                    </svg>
+                  </div>
                 </div>
               </div>
 
