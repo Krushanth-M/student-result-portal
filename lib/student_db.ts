@@ -53,13 +53,17 @@ export interface ClassInsights {
 
 // 2. Initialize Supabase
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || "";
 
 export const isSupabaseConfigured = !!(supabaseUrl && supabaseAnonKey);
 
-export const supabase = isSupabaseConfigured
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : null;
+export const supabase = (() => {
+  try {
+    return isSupabaseConfigured ? createClient(supabaseUrl, supabaseAnonKey) : null;
+  } catch {
+    return null;
+  }
+})();
 
 // 3. Dummy Seed Data (Maths, Python, AI, Chemistry, ECE)
 const DUMMY_STUDENTS: Student[] = [
